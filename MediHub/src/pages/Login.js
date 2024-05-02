@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+} from "firebase/firestore";
 import { db, FirebaseAuth } from "../firebase/firebase-config";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContract } from "../context/context";
 import { useNavigate } from "react-router";
 import { ethers } from "ethers";
@@ -21,8 +23,6 @@ import {
   useColorModeValue,
   Select,
   useToast,
-  RadioGroup,
-  Radio,
 } from "@chakra-ui/react";
 
 const Login = () => {
@@ -30,7 +30,6 @@ const Login = () => {
   const navigate = useNavigate();
   const toast = useToast();
   const { authData } = useContract();
-  // console.log(authData);
   const [todo, setTodo] = useState("");
 
   const {
@@ -51,57 +50,21 @@ const Login = () => {
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
   const [metamaskAddress, setMetamaskAddress] = useState("");
-  const [usertype, setUsertype] = useState("");
 
-  // const signup = async () => {
-  //   const googleProvider = new GoogleAuthProvider();
-  //   await signInWithPopup(FirebaseAuth, googleProvider).then((data) =>
-  //     console.log(data)
-  //   );
-  // };
-
-  const emailExists = async (email) => {
-    // const profilesRef = collection(db, "profiles");
-    // const querySnapshot = await getDocs(query(profilesRef, where("email", "==", email)));
-    // if(querySnapshot)
-    //   console.log(querySnapshot)
-    // return !querySnapshot.empty;
-
-    const res = await getDocs(collection(db, "profiles"));
-    for (let i = 0; i < res.docs.length; i++) {
-      if (res?.docs[i]?.data()?.email == email) {
-        console.log("Hello", res?.docs[i]?.data()?.userType);
-        setUserType(res?.docs[i]?.data()?.userType);
-        console.log("Hello", userType);
-
-        return true;
-      }
-    }
-    return false;
-  };
-
-  useEffect(() => {
-    const get = async () => {
-      const emailAlreadyExists = await emailExists(authData?.email);
-      if (emailAlreadyExists) {
-        navigate("/Dashboard");
-      }
-    };
-
-    get();
-  }, []);
+  useEffect(() => {}, []);
 
   const signIn = async (e) => {
     e.preventDefault();
     try {
-      const docRef = await addDoc(collection(db, "profiles"), {
+      const collectionName = selectedOption === 'Doctor' ? 'doctors' : 'patients'; // Determine the collection name based on selectedOption
+      const docRef = await addDoc(collection(db, collectionName), { // Use the determined collection name
         name: authData?.displayName,
         email: authData?.email,
         age: age,
         weight: weight,
         height: height,
         metamaskAddress: metamaskAddress,
-        userType: usertype,
+        userType: selectedOption,
       });
       setAccount(metamaskAddress);
       console.log("Document written with ID: ", docRef.id);
@@ -112,34 +75,8 @@ const Login = () => {
         duration: 1500,
         isClosable: true,
       });
-      setUserType(usertype);
+      setUserType(selectedOption);
       navigate("/Dashboard");
-
-      // setting up contract
-      // const provider = new ethers.providers.Web3Provider(window.ethereum);
-      // try {
-      //   if (provider) {
-      //     const signer = provider.getSigner();
-      //     const address = await signer.getAddress();
-      //     setAccount(address);
-      //     const contract = new ethers.Contract(
-      //       MeddyJSON.address,
-      //       MeddyJSON.abi,
-      //       signer
-      //     );
-      //     console.log(contract);
-      //     setContract(contract);
-
-      //   }
-      // } catch (error) {
-      //   toast({
-      //     position: "top",
-      //     title: "Error While Connecting With Metamask",
-      //     status: "error",
-      //     duration: 1500,
-      //     isClosable: true,
-      //   });
-      // }
     } catch (e) {
       toast({
         position: "top",
@@ -151,35 +88,8 @@ const Login = () => {
     }
   };
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
   return (
     <section className="todo-container">
-      {/* <div className="todo">
-        <button onClick={signup}>Sign Up</button>
-        <h1 className="header">Todo-App</h1>
-
-        <div>
-          <div>
-            <input
-              type="text"
-              placeholder="What do you have to do today?"
-              onChange={(e) => setTodo(e.target.value)}
-            />
-          </div>
-
-          <div className="btn-container">
-            <button type="submit" className="btn" onClick={addTodo}>
-              Submit
-            </button>
-          </div>
-        </div>
-
-        <div className="todo-content">...</div>
-      </div> */}
-
       <Flex
         minH={"100vh"}
         align={"center"}
@@ -244,13 +154,15 @@ const Login = () => {
                   onChange={(e) => setMetamaskAddress(e.target.value)}
                 />
               </FormControl>
-
-              <FormControl colSpan={[6, 3]} isRequired>
+              <FormControl id="text" isRequired>
                 <FormLabel>User Type</FormLabel>
-                <Input
-                  type="text"
-                  onChange={(e) => setUsertype(e.target.value)}
-                />
+                <Select
+                  placeholder="Select user type"
+                  onChange={(e) => setSelectedOption(e.target.value)}
+                >
+                  <option value="doctor">Doctor</option>
+                  <option value="patient">Patient</option>
+                </Select>
               </FormControl>
               <Stack spacing={10}>
                 <Button
