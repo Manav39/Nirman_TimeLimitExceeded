@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  collection,
-  addDoc,
-} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db, FirebaseAuth } from "../firebase/firebase-config";
 import { useContract } from "../context/context";
 import { useNavigate } from "react-router";
@@ -56,10 +53,12 @@ const Login = () => {
   const signIn = async (e) => {
     e.preventDefault();
     try {
-      const collectionName = selectedOption === 'Doctor' ? 'doctors' : 'patients'; // Determine the collection name based on selectedOption
-      const docRef = await addDoc(collection(db, collectionName), { // Use the determined collection name
-        name: authData?.displayName,
-        email: authData?.email,
+      const collectionName =
+        selectedOption === "Doctor" ? "doctors" : "patients"; // Determine the collection name based on selectedOption
+      const docRef = await addDoc(collection(db, collectionName), {
+        // Use the determined collection name
+        name: name,
+        email: email,
         age: age,
         weight: weight,
         height: height,
@@ -160,8 +159,8 @@ const Login = () => {
                   placeholder="Select user type"
                   onChange={(e) => setSelectedOption(e.target.value)}
                 >
-                  <option value="doctor">Doctor</option>
-                  <option value="patient">Patient</option>
+                  <option value="Doctor">Doctor</option>
+                  <option value="Patient">Patient</option>
                 </Select>
               </FormControl>
               <Stack spacing={10}>

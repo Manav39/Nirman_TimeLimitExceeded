@@ -61,6 +61,8 @@ const HospitalSignUp = () => {
         name: name,
         id: id,
         pass: pass,
+        operationTheatreBeds: 10,
+        generalBeds: 10,
       });
     } catch (e) {
       toast({
