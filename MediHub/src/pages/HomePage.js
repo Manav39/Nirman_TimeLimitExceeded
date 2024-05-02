@@ -130,17 +130,18 @@ const HomePage = () => {
         console.log(contract);
         setContract(contract);
         setProvider(signer);
-        if (
-          address === "0x46A2A666fc06681e2cB49440a0776a6C4Cc21906" ||
-          address === "0xf40b291189aE7F917c39D0B7e327E0A929c9952c" ||
-          address === "0xdaDD30aAEe8E15F925b3b0F0e18f84E6FE62C6f9"
-        ) {
-          setUserType("Hospital");
-          navigate("Dashboard");
-        } else {
-          setUserType("Patient");
-          navigate("Dashboard");
-        }
+        // if (
+        //   address === "0x46A2A666fc06681e2cB49440a0776a6C4Cc21906" ||
+        //   address === "0xf40b291189aE7F917c39D0B7e327E0A929c9952c" ||
+        //   address === "0xdaDD30aAEe8E15F925b3b0F0e18f84E6FE62C6f9"
+        // ) {
+        //   setUserType("");
+        //   navigate("Dashboard");
+        // } else {
+        //   setUserType("Patient");
+        //   navigate("Dashboard");
+        // }
+        navigate("/login");
       } else {
         toast({
           position: "top",
@@ -217,6 +218,10 @@ const HomePage = () => {
     navigate("/assistant");
   };
 
+  const handleHospital = () => {
+    navigate("/signup");
+  };
+
   return (
     <div className={styles.fitnesslandingpage}>
       <div className={styles.navbar}>
@@ -275,11 +280,8 @@ const HomePage = () => {
               <button className={styles.button} onClick={requestMetaMaskAccess}>
                 <div className={styles.getStarted}>Get Started</div>
               </button>
-              <button
-                className={styles.button1}
-                onClick={requestMetaMaskAccess}
-              >
-                <div className={styles.getStarted}>Preview</div>
+              <button className={styles.button} onClick={handleHospital}>
+                <div className={styles.getStarted}>Hospital Login</div>
               </button>
             </div>
           </div>

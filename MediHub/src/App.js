@@ -23,6 +23,9 @@ import Consult from "./pages/Consult";
 import Login from "./pages/Login";
 import AddDoctors from "./pages/AddDoctors";
 import Beds from "./pages/Beds";
+import HospitalSignUp from "./pages/HospitalSignUp";
+import HospitalDesc from "./pages/HospitalDesc";
+import HospitalLogin from "./pages/HospitalLogin";
 
 function App() {
   return (
@@ -89,6 +92,8 @@ function App() {
             </>
           }
         />
+        <Route path="/signup" element={<HospitalSignUp />} />
+        <Route path="/loginh" element={<HospitalLogin />} />
         <Route
           path="/profile"
           element={
@@ -113,7 +118,7 @@ function App() {
             </SideBar>
           }
         />
-         <Route
+        <Route
           path="/Register_Doctor"
           element={
             <SideBar>
@@ -126,6 +131,14 @@ function App() {
           element={
             <SideBar>
               <Beds />
+            </SideBar>
+          }
+        />
+        <Route
+          path="/hospital/:id"
+          element={
+            <SideBar>
+              <HospitalDesc />
             </SideBar>
           }
         />
