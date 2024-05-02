@@ -10,10 +10,16 @@ export const MeddyProvider = (props) => {
   const [contract, setContract] = useState(null);
   const [provider, setProvider] = useState(null);
   const [authData, setAuthData] = useState([]);
+  const [hospName, setHospName] = useState("");
+  const [hospId, setHospId] = useState("");
 
   return (
     <MeddyContext.Provider
       value={{
+        hospName,
+        hospId,
+        setHospId,
+        setHospName,
         account,
         setAccount,
         contract,

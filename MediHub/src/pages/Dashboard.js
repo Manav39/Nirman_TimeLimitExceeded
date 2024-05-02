@@ -12,40 +12,20 @@ import {
 } from "@chakra-ui/react";
 import MeddyJSON from "../constants/Meddy.json";
 import { ethers } from "ethers";
+import { useParams } from "react-router-dom";
 
 const Dashboard = () => {
   const toast = useToast();
-  const { contract, setContract } = useContract();
+  const { contract, setContract, userType, hospName, hospId } = useContract();
   const [numberOfPatients, setNumberOfPatients] = useState(0);
   const [numberOfAppointments, setNumberOfAppointments] = useState(0);
-
-  useEffect(() => {
-    const getContractData = async () => {
-      try {
-        if (contract) {
-          const patientsCount = await contract.getPatientsCount();
-          const appointmentsCount = await contract.getAppointmentsCount();
-
-          setNumberOfPatients(patientsCount.toNumber());
-          setNumberOfAppointments(appointmentsCount.toNumber());
-        }
-      } catch (error) {
-        console.error("Error fetching contract data:", error.message);
-        toast({
-          title: "Error",
-          description: "Failed to fetch contract data",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
-    };
-
-    getContractData();
-  }, [contract, toast]);
+  useEffect(() => {}, [contract, toast]);
 
   return (
     <Box p={8}>
+      <Heading as="h1" mb={8} textAlign="center">
+        {userType === "Hospital" ? `${hospName} ${hospId}` : ""}
+      </Heading>
       <Heading as="h1" mb={8} textAlign="center">
         Dashboard
       </Heading>
