@@ -1,3 +1,12 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyB-kVrQGMiygQ2Iebaftv-bm2qz6snPNzs",
+  authDomain: "medihub-b4ec9.firebaseapp.com",
+  projectId: "medihub-b4ec9",
+  storageBucket: "medihub-b4ec9.appspot.com",
+  messagingSenderId: "503059893481",
+  appId: "1:503059893481:web:bda599b6ebd97aab9cf478",
+};
+
 import React, { useEffect, useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db, FirebaseAuth } from "../firebase/firebase-config";
@@ -48,12 +57,11 @@ const Login = () => {
   const signIn = async (e) => {
     e.preventDefault();
     try {
-      const collectionName =
-        selectedOption === "Doctor" ? "doctors" : "patients"; // Determine the collection name based on selectedOption
-      const docRef = await addDoc(collection(db, collectionName), {
-        // Use the determined collection name
-        name: authData?.displayName,
-        email: authData?.email,
+      console.log("signing in");
+      console.log(usertype);
+      const docRef = await addDoc(collection(db, usertype), {
+        name: name,
+        email: email,
         age: age,
         weight: weight,
         height: height,
@@ -73,9 +81,9 @@ const Login = () => {
         isClosable: true,
       });
       setUserType(usertype);
-      if (usertype === "patients") {
+      if (usertype === "Patient") {
         console.log("navigating to patient dashboard");
-        navigate("/patient_Dasboard");
+        navigate("/patient_Dashboard");
       } else {
         navigate("/Dashboard");
       }
@@ -164,12 +172,11 @@ const Login = () => {
 
               <FormControl id="userType" isRequired>
                 <FormLabel>User Type</FormLabel>
-                <Select
-                  placeholder="Select user type"
-                  onChange={(e) => setSelectedOption(e.target.value)}
-                >
-                  <option value="octor">Doctor</option>
-                  <option value="patient">Patient</option>
+                <Select onChange={(e) => setUsertype(e.target.value)}>
+                  <option value="">Select User Type</option>
+                  <option value="Hospital">Hospital</option>
+                  <option value="Patient">Patient</option>
+                  <option value="Doctor">Doctor</option>
                 </Select>
               </FormControl>
               <Stack spacing={10}>

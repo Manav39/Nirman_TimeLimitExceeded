@@ -24,37 +24,8 @@ const Dashboard_patient = () => {
   const [medicalRecords, setMedicalRecords] = useState({});
   const [upcomingAppointments, setUpcomingAppointments] = useState([]);
   const [healthTips, setHealthTips] = useState([]);
-  
-  useEffect(() => {
-    const getContractData = async () => {
-      try {
-        if (contract) {
-          // Fetch medical records
-          const records = await contract.getMedicalRecords();
-          setMedicalRecords(records);
 
-          // Fetch upcoming appointments
-          const appointments = await contract.getUpcomingAppointments();
-          setUpcomingAppointments(appointments);
-
-          // Fetch health tips
-          const tips = await contract.getHealthTips();
-          setHealthTips(tips);
-        }
-      } catch (error) {
-        console.error("Error fetching contract data:", error.message);
-        toast({
-          title: "Error",
-          description: "Failed to fetch contract data",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
-    };
-
-    getContractData();
-  }, [contract, toast]);
+  useEffect(() => {}, []);
 
   return (
     <Box p={8}>
@@ -69,11 +40,15 @@ const Dashboard_patient = () => {
         </Heading>
         <SimpleGrid columns={[1, 2]} spacing={4}>
           <Box>
-            <Text fontSize="lg" fontWeight="bold">Allergies:</Text>
+            <Text fontSize="lg" fontWeight="bold">
+              Allergies:
+            </Text>
             <Text fontSize="lg">{medicalRecords.allergies || "N/A"}</Text>
           </Box>
           <Box>
-            <Text fontSize="lg" fontWeight="bold">Medications:</Text>
+            <Text fontSize="lg" fontWeight="bold">
+              Medications:
+            </Text>
             <Text fontSize="lg">{medicalRecords.medications || "N/A"}</Text>
           </Box>
           {/* Add more medical record fields as needed */}
@@ -90,15 +65,21 @@ const Dashboard_patient = () => {
         {upcomingAppointments.length > 0 ? (
           upcomingAppointments.map((appointment, index) => (
             <Box key={index} mb={4}>
-              <Text fontSize="lg" fontWeight="bold">Date: {appointment.date}</Text>
-              <Text fontSize="lg" fontWeight="bold">Time: {appointment.time}</Text>
+              <Text fontSize="lg" fontWeight="bold">
+                Date: {appointment.date}
+              </Text>
+              <Text fontSize="lg" fontWeight="bold">
+                Time: {appointment.time}
+              </Text>
               {/* Add more appointment details as needed */}
             </Box>
           ))
         ) : (
           <Text fontSize="lg">No upcoming appointments</Text>
         )}
-        <Button colorScheme="blue" size="sm">Schedule Appointment</Button>
+        <Button colorScheme="blue" size="sm">
+          Schedule Appointment
+        </Button>
       </Box>
 
       <Divider mb={8} />
@@ -117,7 +98,9 @@ const Dashboard_patient = () => {
         ) : (
           <Text fontSize="lg">No health tips available</Text>
         )}
-        <Button colorScheme="green" size="sm">Request More Tips</Button>
+        <Button colorScheme="green" size="sm">
+          Request More Tips
+        </Button>
       </Box>
 
       {/* Additional Information
@@ -134,7 +117,7 @@ const Dashboard_patient = () => {
             <Badge colorScheme="yellow">Emergency Contact</Badge>
             <Text fontSize="lg">Emergency Contact: John Doe - 123-456-7890</Text>
           </Box> */}
-        {/* </VStack> */}
+      {/* </VStack> */}
       {/* </Box> */}
     </Box>
   );
