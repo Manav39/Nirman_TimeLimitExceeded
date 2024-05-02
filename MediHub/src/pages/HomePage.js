@@ -139,7 +139,7 @@ const HomePage = () => {
           navigate("Dashboard");
         } else {
           setUserType("Patient");
-          navigate("Dashboard");
+          navigate("patient_Dashboard");
         }
       } else {
         toast({

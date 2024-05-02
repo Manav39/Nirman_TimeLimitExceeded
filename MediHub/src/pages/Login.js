@@ -1,73 +1,60 @@
 import React, { useEffect, useState } from "react";
-import {
-  collection,
-  addDoc,
-} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db, FirebaseAuth } from "../firebase/firebase-config";
 import { useContract } from "../context/context";
 import { useNavigate } from "react-router";
-import { ethers } from "ethers";
-import MeddyJSON from "../constants/Meddy.json";
-import { getDocs, query, where } from "firebase/firestore";
-import {
-  Flex,
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  Checkbox,
-  Stack,
-  Button,
-  Heading,
-  Text,
-  useColorModeValue,
-  Select,
-  useToast,
-} from "@chakra-ui/react";
+import { Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, Text, useColorModeValue, useToast, Select } from "@chakra-ui/react";
+
 
 const Login = () => {
-  const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
   const toast = useToast();
   const { authData } = useContract();
-  const [todo, setTodo] = useState("");
 
   const {
-    account,
     setAccount,
-    contract,
-    setContract,
-    userType,
     setUserType,
-    provider,
-    setProvider,
   } = useContract();
 
-  const [id, setId] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState(0);
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
   const [metamaskAddress, setMetamaskAddress] = useState("");
+  const [usertype, setUsertype] = useState("");
+  const [Id, setID] = useState("");
 
-  useEffect(() => {}, []);
+  const emailExists = async (email) => {
+    const res = await getDocs(collection(db, "doctors"));
+    for (let i = 0; i < res.docs.length; i++) {
+      if (res?.docs[i]?.data()?.email == email) {
+        setUserType(res?.docs[i]?.data()?.userType);
+        return true;
+      }
+    }
+    return false;
+  };
 
   const signIn = async (e) => {
     e.preventDefault();
     try {
-      const collectionName = selectedOption === 'Doctor' ? 'doctors' : 'patients'; // Determine the collection name based on selectedOption
-      const docRef = await addDoc(collection(db, collectionName), { // Use the determined collection name
-        name: authData?.displayName,
-        email: authData?.email,
+      console.log("signing in")
+      console.log(usertype);
+      const docRef = await addDoc(collection(db, usertype), { 
+        name: name,
+        email: email,
         age: age,
         weight: weight,
         height: height,
         metamaskAddress: metamaskAddress,
-        userType: selectedOption,
+        ID : Id,
+        userType: usertype,
       });
+
+      console.log(docRef);
+      console.log("succesfully done")
       setAccount(metamaskAddress);
-      console.log("Document written with ID: ", docRef.id);
       toast({
         position: "top",
         title: "Details saved successfully",
@@ -75,8 +62,13 @@ const Login = () => {
         duration: 1500,
         isClosable: true,
       });
-      setUserType(selectedOption);
-      navigate("/Dashboard");
+      setUserType(usertype);
+      if(usertype==="patients"){
+        console.log("navigating to patient dashboard")
+        navigate("/patient_Dasboard")
+      }else{
+        navigate("/Dashboard");
+      }
     } catch (e) {
       toast({
         position: "top",
@@ -115,7 +107,7 @@ const Login = () => {
                 <FormLabel>Name</FormLabel>
                 <Input
                   type="text"
-                  isDisabled
+                  // isDisabled
                   value={authData?.displayName}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -124,7 +116,7 @@ const Login = () => {
                 <FormLabel>Email</FormLabel>
                 <Input
                   type="email"
-                  isDisabled
+                  // isDisabled
                   value={authData?.email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -154,14 +146,22 @@ const Login = () => {
                   onChange={(e) => setMetamaskAddress(e.target.value)}
                 />
               </FormControl>
+
               <FormControl id="text" isRequired>
+                <FormLabel>ID</FormLabel>
+                <Input
+                  type="text"
+                  onChange={(e) => setID(e.target.value)}
+                />
+              </FormControl>
+
+              <FormControl id="userType" isRequired>
                 <FormLabel>User Type</FormLabel>
-                <Select
-                  placeholder="Select user type"
-                  onChange={(e) => setSelectedOption(e.target.value)}
-                >
-                  <option value="doctor">Doctor</option>
-                  <option value="patient">Patient</option>
+                <Select onChange={(e) => setUsertype(e.target.value)}>
+                  <option value="">Select User Type</option>
+                  <option value="hospital">Hospital</option>
+                  <option value="patients">Patient</option>
+                  <option value="doctors">Doctor</option>
                 </Select>
               </FormControl>
               <Stack spacing={10}>
