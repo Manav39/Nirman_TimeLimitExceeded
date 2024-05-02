@@ -21,6 +21,8 @@ import Assistant from "./pages/Assistant";
 import Disease from "./pages/Disease";
 import Consult from "./pages/Consult";
 import Login from "./pages/Login";
+import AddDoctors from "./pages/AddDoctors";
+import Beds from "./pages/Beds";
 
 function App() {
   return (
@@ -108,6 +110,22 @@ function App() {
           element={
             <SideBar>
               <Disease />
+            </SideBar>
+          }
+        />
+         <Route
+          path="/Register_Doctor"
+          element={
+            <SideBar>
+              <AddDoctors />
+            </SideBar>
+          }
+        />
+        <Route
+          path="/Beds_Availabilty"
+          element={
+            <SideBar>
+              <Beds />
             </SideBar>
           }
         />

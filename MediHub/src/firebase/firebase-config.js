@@ -7,12 +7,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDBlh1WSvbhqQItQbcs-nddDvOPAgut7FQ",
-  authDomain: "medichain-ca476.firebaseapp.com",
-  projectId: "medichain-ca476",
-  storageBucket: "medichain-ca476.appspot.com",
-  messagingSenderId: "423403825825",
-  appId: "1:423403825825:web:5bdc33d7967e3357d75ee0",
+  apiKey: "AIzaSyB-kVrQGMiygQ2Iebaftv-bm2qz6snPNzs",
+  authDomain: "medihub-b4ec9.firebaseapp.com",
+  projectId: "medihub-b4ec9",
+  storageBucket: "medihub-b4ec9.appspot.com",
+  messagingSenderId: "503059893481",
+  appId: "1:503059893481:web:bda599b6ebd97aab9cf478"
 };
 
 // Initialize Firebase
