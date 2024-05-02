@@ -89,76 +89,76 @@ const HomePage = () => {
   };
 
   const requestMetaMaskAccess = async () => {
-    // const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // try {
-    //   if (provider) {
-    //     window.ethereum
-    //       .request({ method: "eth_requestAccounts" })
-    //       .then((res) => accountChangeHandler(res[0]))
-    //       .catch((err) => {
-    //         console.log(err);
-    //         toast({
-    //           position: "top",
-    //           title: "Error While Connecting With Metamask",
-    //           status: "error",
-    //           duration: 1500,
-    //           isClosable: true,
-    //         });
-    //       });
-    //     await provider.send("eth_requestAccounts", []);
-    //     window.ethereum.on("chainChanged", () => {
-    //       window.location.reload();
-    //     });
-    //     window.ethereum.on("accountsChanged", () => {
-    //       window.location.reload();
-    //     });
-    //     toast({
-    //       position: "top",
-    //       title: "Connected With Metamask Successfully",
-    //       status: "success",
-    //       duration: 1500,
-    //       isClosable: true,
-    //     });
-    //     const signer = provider.getSigner();
-    //     const address = await signer.getAddress();
-    //     setAccount(address);
-    //     const contract = new ethers.Contract(
-    //       MeddyJSON.address,
-    //       MeddyJSON.abi,
-    //       signer
-    //     );
-    //     console.log(contract);
-    //     setContract(contract);
-    //     setProvider(signer);
-    //     if (
-    //       address === "0x46A2A666fc06681e2cB49440a0776a6C4Cc21906" ||
-    //       address === "0xf40b291189aE7F917c39D0B7e327E0A929c9952c" ||
-    //       address === "0xdaDD30aAEe8E15F925b3b0F0e18f84E6FE62C6f9"
-    //     ) {
-    //       setUserType("Doctor");
-    //       navigate("Dashboard");
-    //     } else {
-    //       setUserType("Patient");
-    //       navigate("Dashboard");
-    //     }
-    //   } else {
-    //     toast({
-    //       position: "top",
-    //       title: "Install Metamask Extension",
-    //       status: "warning",
-    //       duration: 1500,
-    //       isClosable: true,
-    //     });
-    //   }
-    // } catch (error) {
-    //   toast({
-    //     position: "top",
-    //     title: "Error While Connecting With Metamask",
-    //     status: "error",
-    //     duration: 1500,
-    //     isClosable: true,
-    //   });
-    // }
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    try {
+      if (provider) {
+        // window.ethereum
+        //   .request({ method: "eth_requestAccounts" })
+        //   .then((res) => accountChangeHandler(res[0]))
+        //   .catch((err) => {
+        //     console.log(err);
+        //     toast({
+        //       position: "top",
+        //       title: "Error While Connecting With Metamask",
+        //       status: "error",
+        //       duration: 1500,
+        //       isClosable: true,
+        //     });
+        //   });
+        await provider.send("eth_requestAccounts", []);
+        window.ethereum.on("chainChanged", () => {
+          window.location.reload();
+        });
+        window.ethereum.on("accountsChanged", () => {
+          window.location.reload();
+        });
+        toast({
+          position: "top",
+          title: "Connected With Metamask Successfully",
+          status: "success",
+          duration: 1500,
+          isClosable: true,
+        });
+        const signer = provider.getSigner();
+        const address = await signer.getAddress();
+        setAccount(address);
+        const contract = new ethers.Contract(
+          MeddyJSON.address,
+          MeddyJSON.abi,
+          signer
+        );
+        console.log(contract);
+        setContract(contract);
+        setProvider(signer);
+        if (
+          address === "0x46A2A666fc06681e2cB49440a0776a6C4Cc21906" ||
+          address === "0xf40b291189aE7F917c39D0B7e327E0A929c9952c" ||
+          address === "0xdaDD30aAEe8E15F925b3b0F0e18f84E6FE62C6f9"
+        ) {
+          setUserType("Hospital");
+          navigate("Dashboard");
+        } else {
+          setUserType("Patient");
+          navigate("Dashboard");
+        }
+      } else {
+        toast({
+          position: "top",
+          title: "Install Metamask Extension",
+          status: "warning",
+          duration: 1500,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      toast({
+        position: "top",
+        title: "Error While Connecting With Metamask",
+        status: "error",
+        duration: 1500,
+        isClosable: true,
+      });
+    }
   };
 
   const onLogoClick = useCallback(() => {
@@ -248,7 +248,7 @@ const HomePage = () => {
               <button
                 className={styles.login}
                 style={{ fontSize: "180%" }}
-                onClick={requestGoogleAuth}
+                onClick={requestMetaMaskAccess}
               >
                 LOGIN
               </button>

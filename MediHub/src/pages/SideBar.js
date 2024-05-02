@@ -151,6 +151,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       { name: "Consult", icon: FiStar },
       { name: "Profile", icon: FiSettings },
     ];
+  } else if(userType == "Hospital"){
+    LinkItems = [
+      { name: "Dashboard", icon: FiHome },
+      { name: "Register_Doctor", icon: FiStar },
+      { name: "Add_Patients", icon: FiStar },
+      { name: "Beds_Availabilty", icon: FiStar },
+    ];
   }
 
   return (
