@@ -144,12 +144,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     ];
   } else if (userType === "Patient") {
     LinkItems = [
-      { name: "Dashboard", icon: FiHome },
+      { name: "patient_Dashboard", icon: FiHome },
       { name: "Medical_History", icon: FiStar },
-      { name: "Disease", icon: FiStar },
-      { name: "Articles", icon: FiStar },
+      // { name: "Disease", icon: FiStar },
+      // { name: "Articles", icon: FiStar },
       { name: "Consult", icon: FiStar },
-      { name: "Profile", icon: FiSettings },
+      { name: "Patient's_Profile", icon: FiSettings },
     ];
   } else if(userType == "Hospital"){
     LinkItems = [

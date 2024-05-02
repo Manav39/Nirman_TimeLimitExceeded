@@ -13,16 +13,19 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Dashboard from "./pages/Dashboard";
 import Patient from "./pages/Patient";
 import Articles from "./pages/Articles";
-import Medical_History from "./pages/Medical_History";
+import Medical_History from "./pages/patients/Medical_History";
 import Profile from "./pages/Profile";
+import Dashboard_patient from "./pages/patients/Dasboard_patient";
 
 import News from "./pages/News";
 import Assistant from "./pages/Assistant";
 import Disease from "./pages/Disease";
-import Consult from "./pages/Consult";
+import Consult from "./pages/patients/Consult";
 import Login from "./pages/Login";
 import AddDoctors from "./pages/AddDoctors";
 import Beds from "./pages/Beds";
+import SideBar_Patient from "./pages/patients/SideBar_Patient";
+import Profile_Patient from "./pages/patients/Profile_Patient"
 import HospitalSignUp from "./pages/HospitalSignUp";
 import HospitalDesc from "./pages/HospitalDesc";
 import HospitalLogin from "./pages/HospitalLogin";
@@ -48,6 +51,29 @@ function App() {
             </>
           }
         />
+
+         <Route
+          path="/patient_Dashboard"
+          element={
+            <>
+              <SideBar_Patient>
+                <Dashboard_patient/>
+              </SideBar_Patient>
+            </>
+          }
+        />
+
+          <Route
+          path="/Medical_History"
+          element={
+            <>
+              <SideBar_Patient>
+                <Medical_History/>
+              </SideBar_Patient>
+            </>
+          }
+        />
+
 
         <Route
           path="/Diagnose"
@@ -82,7 +108,7 @@ function App() {
           }
         />
 
-        <Route
+        {/* <Route
           path="/Medical_History"
           element={
             <>
@@ -91,7 +117,7 @@ function App() {
               </SideBar>
             </>
           }
-        />
+        /> */}
         <Route path="/signup" element={<HospitalSignUp />} />
         <Route path="/loginh" element={<HospitalLogin />} />
         <Route
@@ -100,6 +126,15 @@ function App() {
             <SideBar>
               <Profile />
             </SideBar>
+          }
+        />
+
+          <Route
+          path="/Patient's_Profile"
+          element={
+            <SideBar_Patient>
+              <Profile_Patient/>
+            </SideBar_Patient>
           }
         />
         <Route
