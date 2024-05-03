@@ -42,6 +42,7 @@ import {
   FiMenu,
   FiBell,
   FiChevronDown,
+  FiMap
 } from "react-icons/fi";
 import { IconType } from "react-icons";
 import Cases from "./Diagnose";
@@ -148,6 +149,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       // { name: "Articles", icon: FiStar },
       { name: "Consult", icon: FiStar },
       { name: "Patient's_Profile", icon: FiSettings },
+      { name: "Search_Nearby", icon: FiMap },
     ];
   } else if(userType == "Hospital"){
     LinkItems = [
@@ -172,7 +174,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <img src="/mediChain_icon.svg" style={{ width: "45px" }}></img>
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          MediChain
+          MediHub
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>

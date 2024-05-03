@@ -140,7 +140,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       { name: "patient_Dashboard", icon: FiHome },
       { name: "Medical_History", icon: FiStar },
       { name: "Consult", icon: FiStar },
-      { name: "Patient's_rofile", icon: FiSettings },
+      { name: "Patient's_Profile", icon: FiSettings },
       { name: "Search_Nearby", icon: FiMap },
     ];
   } else if (userType == "Hospital") {
