@@ -85,7 +85,7 @@ const Login = () => {
         console.log("navigating to patient dashboard");
         navigate("/patient_Dashboard");
       } else {
-        navigate("/Dashboard");
+        navigate("/Doctor's_Dashboard");
       }
     } catch (e) {
       toast({

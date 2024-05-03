@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useContract } from "../../context/context";
 import {
   Box,
-  Flex,
+  Divider,
   Heading,
   SimpleGrid,
-  Stat,
-  StatLabel,
-  StatNumber,
-  useToast,
   Text,
-  Divider,
-  VStack,
-  Badge,
   Button,
+  Center,
+  Card,
+  CardBody,
+  CardHeader,
 } from "@chakra-ui/react";
-import MeddyJSON from "../../constants/Meddy.json";
-import { ethers } from "ethers";
 
 const Dashboard_patient = () => {
-  const toast = useToast();
-  const { contract, setContract } = useContract();
-  const [medicalRecords, setMedicalRecords] = useState({});
+  // Dummy data for medical records
+  const dummyMedicalRecords = {
+    allergies: "Peanuts, Pollen",
+    medications: "Aspirin, Ibuprofen",
+  };
+
   const [upcomingAppointments, setUpcomingAppointments] = useState([]);
   const [healthTips, setHealthTips] = useState([]);
 
@@ -39,18 +36,28 @@ const Dashboard_patient = () => {
           Medical Records Summary
         </Heading>
         <SimpleGrid columns={[1, 2]} spacing={4}>
-          <Box>
-            <Text fontSize="lg" fontWeight="bold">
-              Allergies:
-            </Text>
-            <Text fontSize="lg">{medicalRecords.allergies || "N/A"}</Text>
-          </Box>
-          <Box>
-            <Text fontSize="lg" fontWeight="bold">
-              Medications:
-            </Text>
-            <Text fontSize="lg">{medicalRecords.medications || "N/A"}</Text>
-          </Box>
+          {/* Allergies Card */}
+          <Center>
+            <Card width="100%">
+              <CardHeader>Allergies</CardHeader>
+              <CardBody>
+                <Text fontSize="lg">
+                  {dummyMedicalRecords.allergies || "N/A"}
+                </Text>
+              </CardBody>
+            </Card>
+          </Center>
+          {/* Medications Card */}
+          <Center>
+            <Card width="100%">
+              <CardHeader>Medications</CardHeader>
+              <CardBody>
+                <Text fontSize="lg">
+                  {dummyMedicalRecords.medications || "N/A"}
+                </Text>
+              </CardBody>
+            </Card>
+          </Center>
           {/* Add more medical record fields as needed */}
         </SimpleGrid>
       </Box>
@@ -102,23 +109,6 @@ const Dashboard_patient = () => {
           Request More Tips
         </Button>
       </Box>
-
-      {/* Additional Information
-      <Box>
-        <Heading as="h2" size="lg" mb={4}>
-          Additional Information
-        </Heading>
-        <VStack spacing={4}>
-          <Box>
-            <Badge colorScheme="blue">Insurance</Badge>
-            <Text fontSize="lg">You are covered under XYZ Insurance</Text>
-          </Box>
-          <Box>
-            <Badge colorScheme="yellow">Emergency Contact</Badge>
-            <Text fontSize="lg">Emergency Contact: John Doe - 123-456-7890</Text>
-          </Box> */}
-      {/* </VStack> */}
-      {/* </Box> */}
     </Box>
   );
 };

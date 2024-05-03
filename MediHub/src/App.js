@@ -16,6 +16,7 @@ import Articles from "./pages/Articles";
 import Medical_History from "./pages/patients/Medical_History";
 import Profile from "./pages/Profile";
 import Dashboard_patient from "./pages/patients/Dasboard_patient";
+import DoctorDashboard from "./pages/Dashboard_Doctor";
 
 import News from "./pages/News";
 import Assistant from "./pages/Assistant";
@@ -51,7 +52,7 @@ function App() {
             </>
           }
         />
-
+{/* "Doctor's_Dashboard" */}
          <Route
           path="/patient_Dashboard"
           element={
@@ -59,6 +60,17 @@ function App() {
               <SideBar_Patient>
                 <Dashboard_patient/>
               </SideBar_Patient>
+            </>
+          }
+        />
+
+          <Route
+          path="/Doctor's_Dashboard"
+          element={
+            <>
+              <SideBar>
+                <DoctorDashboard/>
+              </SideBar>
             </>
           }
         />
