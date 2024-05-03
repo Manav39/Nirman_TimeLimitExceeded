@@ -11,11 +11,7 @@ import Articles from './pages/Articles'
 import Medical_History from './pages/patients/Medical_History'
 import Profile from './pages/Profile'
 import Dashboard_patient from './pages/patients/Dasboard_patient'
-<<<<<<< HEAD
-import DoctorDashboard from "./pages/Dashboard_Doctor";
-=======
 import Search_Nearby from "./pages/patients/Search_Nearby";
->>>>>>> 1ed83bc453cc842c1fdcc92f354b33b9f8067b94
 
 import News from './pages/News'
 import Assistant from './pages/Assistant'
@@ -52,13 +48,8 @@ function App() {
             </>
           }
         />
-<<<<<<< HEAD
-{/* "Doctor's_Dashboard" */}
-         <Route
-=======
 
         <Route
->>>>>>> 1ed83bc453cc842c1fdcc92f354b33b9f8067b94
           path="/patient_Dashboard"
           element={
             <>
@@ -69,22 +60,7 @@ function App() {
           }
         />
 
-<<<<<<< HEAD
-          <Route
-          path="/Doctor's_Dashboard"
-          element={
-            <>
-              <SideBar>
-                <DoctorDashboard/>
-              </SideBar>
-            </>
-          }
-        />
-
         <Route
-=======
-        <Route
->>>>>>> 1ed83bc453cc842c1fdcc92f354b33b9f8067b94
           path="/Medical_History"
           element={
             <>
