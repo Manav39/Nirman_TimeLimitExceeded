@@ -64,6 +64,13 @@ const AddDoctors = () => {
         license: License,
         userType: "Doctor",
       });
+      console.log(account);
+      const response = await contract?.addDoctor(
+        name,
+        parseInt(License),
+        "0xdaDD30aAEe8E15F925b3b0F0e18f84E6FE62C6f9"
+      );
+      console.log(response);
       console.log("Document written with ID: ", docRef.id);
       toast({
         position: "top",
@@ -74,6 +81,7 @@ const AddDoctors = () => {
       });
       setUserType("Hospital");
     } catch (e) {
+      console.log(e);
       toast({
         position: "top",
         title: "Error while saving details",

@@ -4,6 +4,14 @@ import pickle
 with open('drugTree.pkl', 'rb') as f:
     model = pickle.load(f)
 
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+
 def main():
     st.title('Ayurvedic Remedy')
 
@@ -77,7 +85,7 @@ def main():
     gender_idx = gender_options[gender]
     severity_idx = severity_options[severity]
 
-    if st.button('Predict'):
+    if st.button('Get Remedy'):
         input_data = [[disease_idx, age, gender_idx, severity_idx]]
         prediction = model.predict(input_data)[0]
         st.write(f'You should try:')
