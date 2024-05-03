@@ -218,7 +218,8 @@ const HomePage = () => {
     navigate("/assistant");
   };
 
-  const handleHospital = () => {
+  const handleHospital = async () => {
+    await requestMetaMaskAccess();
     navigate("/signup");
   };
 
@@ -272,7 +273,8 @@ const HomePage = () => {
               <p style={{ fontSize: "150px" }}>MediHub</p>
             </div>
             <div className={styles.subtitle}>
-              One Stop solution which revolutionize HealthCare domain leveraging Technology.
+              One Stop solution which revolutionize HealthCare domain leveraging
+              Technology.
             </div>
             <div className={styles.buttonrow}>
               <button className={styles.button} onClick={requestMetaMaskAccess}>
