@@ -80,7 +80,7 @@ def main():
     if st.button('Predict'):
         input_data = [[disease_idx, age, gender_idx, severity_idx]]
         prediction = model.predict(input_data)[0]
-        st.write(f'You should try:', end='')
+        st.write(f'You should try:')
         st.header(prediction)
         st.write(medicine_descriptions.get(prediction, ""))
 
