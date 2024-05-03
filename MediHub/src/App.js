@@ -1,13 +1,9 @@
-import {
-  Routes,
-  Route,
-  useNavigationType,
-  useLocation,
-} from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import SideBar from "./pages/SideBar";
-import Diagnose from "./pages/Diagnose";
-import { useEffect } from "react";
+import { Routes, Route, useNavigationType, useLocation } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import SideBar from './pages/SideBar'
+import Diagnose from './pages/Diagnose'
+import { useEffect } from 'react'
+
 
 import { ChakraProvider } from "@chakra-ui/react";
 import Dashboard from "./pages/Dashboard";
@@ -30,6 +26,8 @@ import Profile_Patient from "./pages/patients/Profile_Patient";
 import HospitalSignUp from "./pages/HospitalSignUp";
 import HospitalDesc from "./pages/HospitalDesc";
 import HospitalLogin from "./pages/HospitalLogin";
+import DoctorDashboard from "./pages/Dashboard_Doctor"
+import AddPatients from './pages/patients/AddPatient'
 
 function App() {
   return (
@@ -74,7 +72,6 @@ function App() {
             </>
           }
         />
-
         <Route
           path="/Search_Nearby"
           element={
@@ -139,7 +136,14 @@ function App() {
             </SideBar>
           }
         />
-
+        <Route
+          path="/Add_Patients"
+          element={
+            <SideBar>
+              <AddPatients />
+            </SideBar>
+          }
+        />
         <Route
           path="/Patient's_Profile"
           element={
@@ -153,6 +157,15 @@ function App() {
           element={
             <SideBar>
               <Consult />
+            </SideBar>
+          }
+        />
+
+         <Route
+          path="/Doctor's_Dashboard"
+          element={
+            <SideBar>
+              <DoctorDashboard/>
             </SideBar>
           }
         />
@@ -190,6 +203,6 @@ function App() {
         />
       </Routes>
     </ChakraProvider>
-  );
+  )
 }
-export default App;
+export default App

@@ -162,6 +162,10 @@ const HomePage = () => {
     }
   };
 
+  const goToForum = () => {
+    window.open("http://localhost:3001", "_blank");
+  }
+
   const onLogoClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
@@ -240,6 +244,13 @@ const HomePage = () => {
               <button
                 className={styles.exercises}
                 style={{ fontSize: "180%" }}
+                onClick={goToForum}
+              >
+                FORUM
+              </button>
+              <button
+                className={styles.exercises}
+                style={{ fontSize: "180%" }}
                 onClick={onAssistantClick}
               >
                 <ChatIcon /> ASK US
@@ -250,6 +261,13 @@ const HomePage = () => {
                 onClick={onNewsClick}
               >
                 NEWS
+              </button>
+              <button
+                className={styles.exercises}
+                style={{ fontSize: "180%" }}
+                onClick={onAssistantClick}
+              >
+                <ChatIcon /> FORUM
               </button>
               <button
                 className={styles.login}

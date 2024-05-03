@@ -1,227 +1,78 @@
-// import React, { useEffect, useState } from "react";
-// import { useContract } from "../context/context";
-// import {
-//   Box,
-//   Flex,
-//   Heading,
-//   SimpleGrid,
-//   Stat,
-//   StatLabel,
-//   StatNumber,
-//   useToast,
-// } from "@chakra-ui/react";
-// import MeddyJSON from "../constants/Meddy.json";
-// import { ethers } from "ethers";
-// import { useParams } from "react-router-dom";
-// import { db, FirebaseAuth } from "../firebase/firebase-config";
-// import {
-//   collection,
-//   doc,
-//   getDocs,
-//   updateDoc,
-//   query,
-//   where,
-// } from "firebase/firestore";
-
-// function BedsPage({ hospitalId }) {
-//   const [bedDetails, setBedDetails] = useState(null);
-
-//   useEffect(() => {
-//     const fetchBedDetails = async () => {
-//       try {
-//         const q = query(collection(db, "Hospitals"), where("id", "==", "h1"));
-//         const querySnapshot = await getDocs(q);
-//         querySnapshot.forEach((doc) => {
-//           console.log(doc.data());
-//           setBedDetails(doc.data());
-//         });
-//       } catch (error) {
-//         console.error("Error getting documents: ", error);
-//       }
-//     };
-
-//     fetchBedDetails();
-//   }, [hospitalId]);
-
-//   const handleBedChange = async (bedType, change) => {
-//     try {
-//       const docRef = doc(db, "Hospitals");
-//       await updateDoc(docRef, {
-//         [bedType]: bedDetails[bedType] + change,
-//       });
-//       setBedDetails({
-//         ...bedDetails,
-//         [bedType]: bedDetails[bedType] + change,
-//       });
-//     } catch (error) {
-//       console.error("Error updating document:", error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-//         <Stat
-//           p={8}
-//           borderRadius="xl"
-//           boxShadow="md"
-//           bg="white"
-//           _hover={{ bg: "gray.50" }}
-//         >
-//           <Flex align="center">
-//             <Box
-//               as="span"
-//               fontSize="5xl"
-//               color="blue.500"
-//               mr={6}
-//               flexShrink={0}
-//             >
-//               &#x1F468;
-//             </Box>
-//             <Box>
-//               <StatLabel fontSize="xl">Total Operation Theatre Beds</StatLabel>
-//               <StatNumber fontSize="4xl">
-//                 {bedDetails?.operationTheatreBeds}
-//               </StatNumber>
-//             </Box>
-//           </Flex>
-//         </Stat>
-//         <Stat
-//           p={8}
-//           borderRadius="xl"
-//           boxShadow="md"
-//           bg="white"
-//           _hover={{ bg: "gray.50" }}
-//         >
-//           <Flex align="center">
-//             <Box
-//               as="span"
-//               fontSize="5xl"
-//               color="green.500"
-//               mr={6}
-//               flexShrink={0}
-//             >
-//               &#128197;
-//             </Box>
-//             <Box>
-//               <StatLabel fontSize="xl">Total Generals Beds</StatLabel>
-//               <StatNumber fontSize="4xl">{bedDetails?.generalBeds}</StatNumber>
-//             </Box>
-//           </Flex>
-//         </Stat>
-//       </SimpleGrid>
-//     </div>
-//   );
-// }
-
-// export default BedsPage;
-
-import React, { useEffect, useState } from "react";
-import { useContract } from "../context/context";
+import React, { useState } from 'react'
 import {
   Box,
   Button,
   Flex,
+  FormControl,
+  FormLabel,
   Heading,
+  Input,
+  Select,
   SimpleGrid,
   Stat,
   StatLabel,
   StatNumber,
   useToast,
-} from "@chakra-ui/react";
-import MeddyJSON from "../constants/Meddy.json";
-import { ethers } from "ethers";
-import { useParams } from "react-router-dom";
-import { db, FirebaseAuth } from "../firebase/firebase-config";
-import {
-  collection,
-  doc,
-  getDocs,
-  updateDoc,
-  query,
-  where,
-  getDoc,
-} from "firebase/firestore";
+} from '@chakra-ui/react'
 
-function BedsPage({ hospitalId }) {
-  const [bedDetails, setBedDetails] = useState(null);
+function BedsPage() {
+  const [bedDetails, setBedDetails] = useState({
+    operationTheatreBeds: 20,
+    generalBeds: 50,
+  })
+
   const [patientDetails, setPatientDetails] = useState({
-    name: "",
-    bedType: "",
-  });
+    name: '',
+    bedType: '',
+  })
 
-  useEffect(() => {
-    const fetchBedDetails = async () => {
-      try {
-        const q = query(collection(db, "Hospitals"), where("id", "==", "h1"));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-          //console.log(doc.data());
-          setBedDetails(doc.data());
-        });
-      } catch (error) {
-        console.error("Error getting documents: ", error);
-      }
-    };
-
-    fetchBedDetails();
-  }, [hospitalId]);
+  const toast = useToast()
 
   const handleBedChange = async (bedType, change) => {
-    try {
-      console.log(bedDetails);
-      const q = query(collection(db, "Hospitals"), where("id", "==", "h1"));
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach(async (docc) => {
-        console.log(docc.id);
-        const beds = parseInt(docc.data()[bedType]) + parseInt(change);
-        console.log(beds);
-
-        const ref = await doc(db, "Hospitals", docc.id);
-        await updateDoc(ref, {
-          [bedType]: beds, // Assuming you want to increment the general beds by 1
-        });
-        // setBedDetails({
-        //   ...bedDetails,
-        //   generalBeds: bedDetails.generalBeds + 1, // Update local state with the new value
-        // });
-      });
-    } catch (error) {
-      console.error("Error updating document:", error);
-    }
-  };
+    setBedDetails((prevDetails) => ({
+      ...prevDetails,
+      [bedType]: prevDetails[bedType] + change,
+    }))
+    toast({
+      title: `Successfully updated ${bedType} count`,
+      status: 'success',
+      duration: 2000,
+      isClosable: true,
+    })
+  }
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setPatientDetails({
       ...patientDetails,
       [name]: value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (patientDetails.bedType === "" || patientDetails.name === "") {
-      return;
+    e.preventDefault()
+    if (patientDetails.bedType === '' || patientDetails.name === '') {
+      return
     }
-    // Decrement bed count
-    await handleBedChange(patientDetails.bedType, -1);
-    // Additional logic to save patient details can be added here
+    await handleBedChange(patientDetails.bedType, -1)
     setPatientDetails({
-      name: "",
-      bedType: "",
-    });
-  };
+      name: '',
+      bedType: '',
+    })
+  }
 
   return (
-    <div>
+    <Box p={8} bg="gray.100" borderRadius="xl">
+      <Heading mb={8} textAlign="center">
+        Beds & Facilities Availability
+      </Heading>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
         <Stat
           p={8}
           borderRadius="xl"
           boxShadow="md"
           bg="white"
-          _hover={{ bg: "gray.50" }}
+          _hover={{ bg: 'gray.50' }}
         >
           <Flex align="center">
             <Box
@@ -236,7 +87,12 @@ function BedsPage({ hospitalId }) {
             <Box>
               <StatLabel fontSize="xl">Total ICU</StatLabel>
               <StatNumber fontSize="4xl">
-                {bedDetails?.operationTheatreBeds}
+                {bedDetails.operationTheatreBeds}
+              </StatNumber>
+            </Box>
+            <Box ml="auto">
+              <StatNumber fontSize="3xl" color="green.500">
+                Available: {bedDetails.operationTheatreBeds-6}
               </StatNumber>
             </Box>
           </Flex>
@@ -246,7 +102,7 @@ function BedsPage({ hospitalId }) {
           borderRadius="xl"
           boxShadow="md"
           bg="white"
-          _hover={{ bg: "gray.50" }}
+          _hover={{ bg: 'gray.50' }}
         >
           <Flex align="center">
             <Box
@@ -259,44 +115,64 @@ function BedsPage({ hospitalId }) {
               &#128197;
             </Box>
             <Box>
-              <StatLabel fontSize="xl">Total Generals Beds</StatLabel>
-              <StatNumber fontSize="4xl">{bedDetails?.generalBeds}</StatNumber>
+              <StatLabel fontSize="xl">Total General Beds</StatLabel>
+              <StatNumber fontSize="4xl">{bedDetails.generalBeds}</StatNumber>
+            </Box>
+            <Box ml="auto">
+              <StatNumber fontSize="3xl" color="green.500">
+                Available: {bedDetails.generalBeds-17}
+              </StatNumber>
             </Box>
           </Flex>
         </Stat>
       </SimpleGrid>
       <form onSubmit={handleSubmit}>
-        <label>
-          Patient Name:
-          <input
+        <FormControl mt={8}>
+          <FormLabel>Patient Name</FormLabel>
+          <Input
             type="text"
             name="name"
             value={patientDetails.name}
             onChange={handleChange}
+            placeholder="Enter patient name"
+            required
           />
-        </label>
-        <label>
-          Bed Type:
-          <select
+        </FormControl>
+        <FormControl mt={4}>
+          <FormLabel>Bed Type</FormLabel>
+          <Select
             name="bedType"
             value={patientDetails.bedType}
             onChange={handleChange}
+            placeholder="Select bed type"
+            required
           >
             <option value="">Select Bed Type</option>
             <option value="operationTheatreBeds">Operation Theatre Bed</option>
             <option value="generalBeds">General Bed</option>
-          </select>
-        </label>
-        <button type="submit">Add Patient</button>
+          </Select>
+        </FormControl>
+        <Button mt={4} type="submit" colorScheme="blue">
+          Add Patient
+        </Button>
       </form>
-      <Button onClick={() => handleBedChange("operationTheatreBeds", 1)}>
-        Add ICU
-      </Button>
-      <Button onClick={() => handleBedChange("generalBeds", 1)}>
-        Add General Bed
-      </Button>
-    </div>
-  );
+      <Flex mt={4}>
+        <Button
+          mr={4}
+          onClick={() => handleBedChange('operationTheatreBeds', 1)}
+          colorScheme="green"
+        >
+          Add ICU
+        </Button>
+        <Button
+          onClick={() => handleBedChange('generalBeds', 1)}
+          colorScheme="green"
+        >
+          Add General Bed
+        </Button>
+      </Flex>
+    </Box>
+  )
 }
 
-export default BedsPage;
+export default BedsPage
