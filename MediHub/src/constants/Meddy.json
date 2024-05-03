@@ -1,59 +1,16 @@
 {
-  "address": "0x68978F2167D9efB20eFDBF86D7a707a7A6236845",
+  "address": "0x3ec232B937e9DccFD56FB46176ADf792C184C915",
   "abi": [
     {
       "inputs": [
         {
-          "internalType": "address",
-          "name": "_patient",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_case_no",
-          "type": "uint256"
-        },
-        {
           "internalType": "string",
-          "name": "_diseaseName",
+          "name": "_hospital_name",
           "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_drugName",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_imgurl",
-          "type": "string"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_charges",
-          "type": "uint256"
         }
       ],
-      "name": "diagnosePatient",
-      "outputs": [],
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_doctor",
-          "type": "address"
-        }
-      ],
-      "name": "DOCTOR_NOT_FOUND",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "NOT_AUTHORIZED",
-      "type": "error"
+      "type": "constructor"
     },
     {
       "anonymous": false,
@@ -71,15 +28,15 @@
           "type": "address"
         },
         {
-          "indexed": false,
-          "internalType": "string",
-          "name": "disease",
-          "type": "string"
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "case_no",
+          "type": "uint256"
         },
         {
           "indexed": false,
           "internalType": "string",
-          "name": "drug",
+          "name": "prescription",
           "type": "string"
         }
       ],
@@ -87,24 +44,41 @@
       "type": "event"
     },
     {
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "inputs": [],
+      "name": "HOSPITAL_NAME",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
-          "internalType": "address",
-          "name": "_referredDoctor",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "_patient",
-          "type": "address"
+          "internalType": "string",
+          "name": "_doctor_name",
+          "type": "string"
         },
         {
           "internalType": "uint256",
-          "name": "_case_no",
+          "name": "_license_no",
           "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_doctor_address",
+          "type": "address"
         }
       ],
-      "name": "grantAccess",
+      "name": "addDoctor",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -115,7 +89,15 @@
           "internalType": "address",
           "name": "_patient",
           "type": "address"
-        },
+        }
+      ],
+      "name": "addPatient",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
         {
           "internalType": "address",
           "name": "_doctor",
@@ -125,57 +107,80 @@
           "internalType": "uint256",
           "name": "_case_no",
           "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_charges",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "diseaseName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "prescription",
+          "type": "string"
         }
       ],
-      "name": "removeAccess",
+      "name": "diagnosePatient",
       "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "payable",
       "type": "function"
     },
     {
       "inputs": [
         {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "doctors",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "license_no",
+          "type": "uint256"
+        },
+        {
           "internalType": "address",
-          "name": "_patient",
+          "name": "docAddress",
           "type": "address"
         }
       ],
-      "name": "getAllRecords",
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllDoctors",
       "outputs": [
         {
           "components": [
             {
-              "internalType": "uint256",
-              "name": "case_no",
-              "type": "uint256"
-            },
-            {
               "internalType": "string",
-              "name": "diseaseName",
+              "name": "name",
               "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "drugName",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "imgurl",
-              "type": "string"
-            },
-            {
-              "internalType": "address[]",
-              "name": "authorized",
-              "type": "address[]"
             },
             {
               "internalType": "uint256",
-              "name": "consultancyFees",
+              "name": "license_no",
               "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "docAddress",
+              "type": "address"
             }
           ],
-          "internalType": "struct Meddy.MedicalRecord[]",
+          "internalType": "struct Meddy.Doctor[]",
           "name": "",
           "type": "tuple[]"
         }
@@ -184,43 +189,113 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "getAllPatients",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
           "internalType": "uint256",
-          "name": "_case_no",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "patient_records",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "case_no",
           "type": "uint256"
         },
         {
-          "internalType": "address",
-          "name": "_patient",
-          "type": "address"
-        }
-      ],
-      "name": "getPatientRecord",
-      "outputs": [
-        {
           "internalType": "string",
-          "name": "",
+          "name": "diseaseName",
           "type": "string"
         },
         {
           "internalType": "string",
-          "name": "",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "",
+          "name": "prescription",
           "type": "string"
         },
         {
           "internalType": "uint256",
-          "name": "",
+          "name": "consultancyFees",
           "type": "uint256"
         }
       ],
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "patients",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "records",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "case_no",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "diseaseName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "prescription",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "consultancyFees",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
     }
   ]
 }

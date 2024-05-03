@@ -2,105 +2,64 @@
 pragma solidity ^0.8.0;
 
 
-error NOT_AUTHORIZED();
-error DOCTOR_NOT_FOUND(address _doctor);
-
 contract Meddy {
+
+    string public HOSPITAL_NAME;
 
     struct MedicalRecord {
         uint256 case_no;
         string diseaseName;
-        string drugName;
-        string imgurl;
-        address[] authorized; 
-        uint256 consultancyFees;
+        string prescription;
+        uint256 consultancyFees;    
     }
 
-    mapping (address => MedicalRecord[]) records;
-
-    event Diagnosis(address indexed patient, address indexed doctor, string disease, string drug);
-
-    function diagnosePatient(address _patient, uint _case_no, string memory _diseaseName, string memory _drugName,string memory _imgurl, uint256 _charges) public {
-        address[] memory temporary = new address[](2);
-        temporary[0]=_patient;
-        temporary[1]=msg.sender;
-        MedicalRecord memory newRecord = MedicalRecord(_case_no, _diseaseName, _drugName,_imgurl, temporary, _charges);
-        records[_patient].push(newRecord);
-        emit Diagnosis(_patient, msg.sender, _diseaseName, _drugName);
+    struct Doctor {
+        string name;
+        uint license_no;
+        address docAddress;
     }
 
-    function getPatientRecord(uint _case_no, address _patient) public view returns (string memory, string memory, string memory, uint){
-       for(uint i = 0; i< records[_patient].length; i++){
-        if(records[_patient][i].case_no == _case_no){
-            for(uint j = 0; j < records[_patient][i].authorized.length; j++){
-                if(records[_patient][i].authorized[j] == msg.sender){
-                    return (
-                        records[_patient][i].diseaseName,
-                        records[_patient][i].drugName,
-                        records[_patient][i].imgurl,
-                        records[_patient][i].consultancyFees
-                        );
-                }
-            }   
-        }}
-        revert NOT_AUTHORIZED();
+    mapping (address => MedicalRecord[]) public patient_records;
+    mapping (uint256 => MedicalRecord) public records;
+    Doctor[] public doctors;
+    address[] public patients;
+
+
+    constructor(string memory _hospital_name) {
+        HOSPITAL_NAME = _hospital_name;
     }
 
-    // GETALLRECORDS
-    function getAllRecords(address _patient) public view returns ( MedicalRecord[] memory){
-        return records[_patient];
-    }
+    event Diagnosis(address indexed patient, address indexed doctor, uint256 indexed case_no, string prescription);
 
-
-
-    //remove authorization
-    function removeAccess(address _patient, address _doctor, uint _case_no) public {
-        bool isremoved = false;
-        for(uint i = 0; i< records[_patient].length; i++){
-        if(records[_patient][i].case_no == _case_no){
-            for(uint j = 0; j < records[_patient][i].authorized.length; j++){
-                if(records[_patient][i].authorized[j] == _doctor){
-                    address temp = records[_patient][i].authorized[records[_patient][i].authorized.length - 1];
-                    records[_patient][i].authorized[records[_patient][i].authorized.length -1 ] = records[_patient][i].authorized[j];
-                    records[_patient][i].authorized[j] = temp;
-                    records[_patient][i].authorized.pop();
-                    isremoved = true;   
-                }
-            }
-        }}
-        
-        if(!isremoved){
-            revert DOCTOR_NOT_FOUND(_doctor);
+    function diagnosePatient(address _doctor, uint256 _case_no, uint256 _charges, string memory diseaseName, string memory prescription) public payable {
+        require(msg.value > _charges, "Insufficient Fees");
+        (bool success, ) = payable(_doctor).call{value: _charges}("");
+        if(success){
+            // MedicalRecord memory rec = 
+            patient_records[msg.sender].push(MedicalRecord(_case_no,  diseaseName,  prescription, _charges));
+            emit Diagnosis(msg.sender, _doctor, _case_no, prescription);
         }
+
     }
 
-    //give permissions
-    function grantAccess(address _referredDoctor,  address _patient, uint _case_no) public {
-        bool granted = false;
-        if(msg.sender == _patient){
-            for(uint i = 0; i< records[_patient].length; i++){
-                if(records[_patient][i].case_no == _case_no){
-                    records[_patient][i].authorized.push(_referredDoctor);   
-                    granted = true;
-                }
-            }
-        } else {
-            for(uint i = 0; i< records[_patient].length; i++){
-            if(records[_patient][i].case_no == _case_no){
-                for(uint j = 0; j < records[_patient][i].authorized.length; j++){
-                    if(records[_patient][i].authorized[j] == msg.sender){
-                        records[_patient][i].authorized.push(_referredDoctor);   
-                        granted = true;
-                        }   
-                    }
-                }
-            
-            }
-        }
-        if(!granted){
-            revert DOCTOR_NOT_FOUND(msg.sender);
-        }
+    function addDoctor(string memory _doctor_name, uint _license_no, address _doctor_address) public {
+        doctors.push(Doctor(_doctor_name, _license_no, _doctor_address));
     }
 
+    function addPatient(address _patient) public {
+        patients.push(_patient);
+    }
+
+    function getAllDoctors() public view returns(Doctor[] memory) {
+        return doctors;
+    }
+
+    function getAllPatients() public view returns(address[] memory) {
+        return patients;
+    }
+
+
+     fallback() external payable { }
+     receive() external payable { }
    
 }

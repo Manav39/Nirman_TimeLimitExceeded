@@ -1,13 +1,9 @@
-import {
-  Routes,
-  Route,
-  useNavigationType,
-  useLocation,
-} from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import SideBar from "./pages/SideBar";
-import Diagnose from "./pages/Diagnose";
-import { useEffect } from "react";
+import { Routes, Route, useNavigationType, useLocation } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import SideBar from './pages/SideBar'
+import Diagnose from './pages/Diagnose'
+import { useEffect } from 'react'
+
 
 import { ChakraProvider } from "@chakra-ui/react";
 import Dashboard from "./pages/Dashboard";
@@ -16,6 +12,7 @@ import Articles from "./pages/Articles";
 import Medical_History from "./pages/patients/Medical_History";
 import Profile from "./pages/Profile";
 import Dashboard_patient from "./pages/patients/Dasboard_patient";
+import Search_Nearby from "./pages/patients/Search_Nearby";
 
 import News from "./pages/News";
 import Assistant from "./pages/Assistant";
@@ -25,10 +22,12 @@ import Login from "./pages/Login";
 import AddDoctors from "./pages/AddDoctors";
 import Beds from "./pages/Beds";
 import SideBar_Patient from "./pages/patients/SideBar_Patient";
-import Profile_Patient from "./pages/patients/Profile_Patient"
+import Profile_Patient from "./pages/patients/Profile_Patient";
 import HospitalSignUp from "./pages/HospitalSignUp";
 import HospitalDesc from "./pages/HospitalDesc";
 import HospitalLogin from "./pages/HospitalLogin";
+import DoctorDashboard from "./pages/Dashboard_Doctor"
+import AddPatients from './pages/patients/AddPatient'
 
 function App() {
   return (
@@ -52,28 +51,37 @@ function App() {
           }
         />
 
-         <Route
+        <Route
           path="/patient_Dashboard"
           element={
             <>
               <SideBar_Patient>
-                <Dashboard_patient/>
+                <Dashboard_patient />
               </SideBar_Patient>
             </>
           }
         />
 
-          <Route
+        <Route
           path="/Medical_History"
           element={
             <>
               <SideBar_Patient>
-                <Medical_History/>
+                <Medical_History />
               </SideBar_Patient>
             </>
           }
         />
-
+        <Route
+          path="/Search_Nearby"
+          element={
+            <>
+              <SideBar_Patient>
+                <Search_Nearby />
+              </SideBar_Patient>
+            </>
+          }
+        />
 
         <Route
           path="/Diagnose"
@@ -128,12 +136,19 @@ function App() {
             </SideBar>
           }
         />
-
-          <Route
+        <Route
+          path="/Add_Patients"
+          element={
+            <SideBar>
+              <AddPatients />
+            </SideBar>
+          }
+        />
+        <Route
           path="/Patient's_Profile"
           element={
             <SideBar_Patient>
-              <Profile_Patient/>
+              <Profile_Patient />
             </SideBar_Patient>
           }
         />
@@ -142,6 +157,15 @@ function App() {
           element={
             <SideBar>
               <Consult />
+            </SideBar>
+          }
+        />
+
+         <Route
+          path="/Doctor's_Dashboard"
+          element={
+            <SideBar>
+              <DoctorDashboard/>
             </SideBar>
           }
         />
@@ -179,6 +203,6 @@ function App() {
         />
       </Routes>
     </ChakraProvider>
-  );
+  )
 }
-export default App;
+export default App

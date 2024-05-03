@@ -279,9 +279,7 @@ const HomePage = () => {
               <p style={{ fontSize: "150px" }}>MediHub</p>
             </div>
             <div className={styles.subtitle}>
-              Empowering Health with Trust: Decentralized Patient Records,
-              Transparent Drug Supply Chains, and AI-Powered Wellness
-              Assistance.
+              One Stop solution which revolutionize HealthCare domain leveraging Technology.
             </div>
             <div className={styles.buttonrow}>
               <button className={styles.button} onClick={requestMetaMaskAccess}>
