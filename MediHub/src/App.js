@@ -4,13 +4,7 @@ import SideBar from './pages/SideBar'
 import Diagnose from './pages/Diagnose'
 import { useEffect } from 'react'
 
-import { ChakraProvider } from '@chakra-ui/react'
-import Dashboard from './pages/Dashboard'
-import Patient from './pages/Patient'
-import Articles from './pages/Articles'
-import Medical_History from './pages/patients/Medical_History'
-import Profile from './pages/Profile'
-import Dashboard_patient from './pages/patients/Dasboard_patient'
+
 import { ChakraProvider } from "@chakra-ui/react";
 import Dashboard from "./pages/Dashboard";
 import Patient from "./pages/Patient";
@@ -20,19 +14,6 @@ import Profile from "./pages/Profile";
 import Dashboard_patient from "./pages/patients/Dasboard_patient";
 import Search_Nearby from "./pages/patients/Search_Nearby";
 
-import News from './pages/News'
-import Assistant from './pages/Assistant'
-import Disease from './pages/Disease'
-import Consult from './pages/patients/Consult'
-import Login from './pages/Login'
-import AddDoctors from './pages/AddDoctors'
-import Beds from './pages/Beds'
-import SideBar_Patient from './pages/patients/SideBar_Patient'
-import Profile_Patient from './pages/patients/Profile_Patient';
-import HospitalSignUp from './pages/HospitalSignUp'
-import HospitalDesc from './pages/HospitalDesc'
-import HospitalLogin from './pages/HospitalLogin'
-import AddPatient from './pages/patients/AddPatient'
 import News from "./pages/News";
 import Assistant from "./pages/Assistant";
 import Disease from "./pages/Disease";
@@ -46,6 +27,7 @@ import HospitalSignUp from "./pages/HospitalSignUp";
 import HospitalDesc from "./pages/HospitalDesc";
 import HospitalLogin from "./pages/HospitalLogin";
 import DoctorDashboard from "./pages/Dashboard_Doctor"
+import AddPatients from './pages/patients/AddPatient'
 
 function App() {
   return (
@@ -158,7 +140,7 @@ function App() {
           path="/Add_Patients"
           element={
             <SideBar>
-              <AddPatient />
+              <AddPatients />
             </SideBar>
           }
         />
