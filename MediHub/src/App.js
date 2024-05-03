@@ -22,6 +22,7 @@ import Login from "./pages/Login";
 import AddDoctors from "./pages/AddDoctors";
 import Beds from "./pages/Beds";
 import SideBar_Patient from "./pages/patients/SideBar_Patient";
+import Search_P from "./pages/patients/Search_P"
 import Profile_Patient from "./pages/patients/Profile_Patient";
 import HospitalSignUp from "./pages/HospitalSignUp";
 import HospitalDesc from "./pages/HospitalDesc";
@@ -78,6 +79,16 @@ function App() {
             <>
               <SideBar_Patient>
                 <Search_Nearby />
+              </SideBar_Patient>
+            </>
+          }
+        />
+         <Route
+          path="/Search_Pharmacy"
+          element={
+            <>
+              <SideBar_Patient>
+                <Search_P />
               </SideBar_Patient>
             </>
           }

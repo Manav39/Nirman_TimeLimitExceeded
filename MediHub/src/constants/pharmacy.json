@@ -1,0 +1,218 @@
+[
+    {
+      "name": "Patanjali Arogya Kendra",
+      "place_id": "ChIJqwZ_-kvo5zsRHSJTkNfeqkM",
+      "location": {
+        "lat": 19.0109349,
+        "lng": 73.1167572
+      },
+      "address": "Shop No.18-19,Surya Gayatri,Sector-6, New Panvel, Navi Mumbai",
+      "rating": 3.7,
+      "distanceMeter": 9911.89
+    },
+    {
+      "name": "Baidyanath Ayurvedic Stores",
+      "place_id": "ChIJt6e6T9jp5zsRTFZQwfhNNwU",
+      "location": {
+        "lat": 19.0266666,
+        "lng": 73.09009999999999
+      },
+      "address": "Shradha Heritage, Shop No 6, 7, A Wing, Plot No 9, Sector-7, Prashuram Nayak, Panvel, Mumbai",
+      "rating": 2.9,
+      "distanceMeter": 12893.04
+    },
+    {
+      "name": "Shefa Healthcare Pvt. Ltd.",
+      "place_id": "ChIJ270S7yHq5zsRiGQSo5y6fMk",
+      "location": {
+        "lat": 19.0653165,
+        "lng": 73.1120498
+      },
+      "address": "A-10/1, Industrial Area, Taloja, Navi Mumbai",
+      "rating": 3.5,
+      "distanceMeter": 15650.93
+    },
+    {
+      "name": "India Chemist",
+      "place_id": "ChIJ30NSHKnD5zsRGz_Hx5xzYzc",
+      "location": {
+        "lat": 19.011492,
+        "lng": 73.0318329
+      },
+      "address": "Plot No. G -100, KrishnaKamal Building, Sector 20, CBD Belapur, Navi Mumbai",
+      "rating": 4.1,
+      "distanceMeter": 16246.37
+    },
+    {
+      "name": "Siwan Pharmacy",
+      "place_id": "ChIJWz6K_8HD5zsRA1ngDXB3oBw",
+      "location": {
+        "lat": 19.0350488,
+        "lng": 73.01704730000002
+      },
+      "address": "Prashant Apartment, Shop no 1 Plot no : B2 Mata Amritanandamayi Marg, Station West, Nerul West, Sector 20, Navi Mumbai",
+      "rating": 4.5,
+      "distanceMeter": 19016.57
+    },
+    {
+      "name": "Shree Sai Enterprises",
+      "place_id": "ChIJvcnMSODD5zsRWL-6IgEl1iY",
+      "location": {
+        "lat": 19.050257,
+        "lng": 73.014578
+      },
+      "address": "near Railway Colony, Shop no-5, Plot no-105/106, near Railway Colony, Shri Pundalik Mahadu Patil Marg, Sector 23, Juinagar, Navi Mumbai",
+      "distanceMeter": 20271.54
+    },
+    {
+      "name": "Kamal Medico",
+      "place_id": "ChIJRVR9ciHP5zsRMxrLINIc_SM",
+      "location": {
+        "lat": 19.0798644,
+        "lng": 72.99698719999999
+      },
+      "address": "Dilip Rane Hospital, Sector - 9, Vashi, Navi Mumbai - 400703",
+      "distanceMeter": 23843.68
+    },
+    {
+      "name": "SALIUS PHARMA",
+      "place_id": "ChIJ3VQV3VLC5zsRNZL7rT_Gwk0",
+      "location": {
+        "lat": 19.1144262,
+        "lng": 73.0144035
+      },
+      "address": "B-704, Technocity, TTC Ind. Area, Mahape, Navi Mumbai",
+      "rating": 4,
+      "distanceMeter": 25472.62
+    },
+    {
+      "name": "Tulsi Medicals",
+      "place_id": "ChIJgzVeqgnG5zsRg9oJ-vw5eW8",
+      "location": {
+        "lat": 19.0452894,
+        "lng": 72.913602
+      },
+      "address": "Shop NO.7, Daffodils Apartment, near Tiss, Sion - Trombay Road, Deonar, Govandi East, Mumbai",
+      "rating": 3.4,
+      "distanceMeter": 28957.66
+    },
+    {
+      "name": "Shree Balaji Medical Stores",
+      "place_id": "ChIJM9niUFbP5zsRJBBfTTChEKU",
+      "location": {
+        "lat": 19.0615068,
+        "lng": 72.9004231
+      },
+      "address": "70/D, Uday Building, Shop No. 3 M D S Marg, Chembur East, Mumbai",
+      "rating": 4.1,
+      "distanceMeter": 31002.57
+    },
+    {
+      "name": "vishal shah",
+      "place_id": "ChIJuwtTaS_G5zsR2_cvfXOdLEU",
+      "location": {
+        "lat": 19.0765773,
+        "lng": 72.9061533
+      },
+      "address": "Shripal Building, near Lions Garden, Rajchandra Marg, Ghatkopar East, Mumbai",
+      "distanceMeter": 31291.12
+    },
+    {
+      "name": "Premium Pets",
+      "place_id": "ChIJr-CpLoqV5zsRCxb6h0Yp9cU",
+      "location": {
+        "lat": 19.2152903,
+        "lng": 73.0901681
+      },
+      "address": "Kasturi Plaza, D/92, Manpada Road, Dombivli",
+      "rating": 4,
+      "distanceMeter": 32314.6
+    },
+    {
+      "name": "Dockyard Pharmacy & Stores",
+      "place_id": "ChIJv6l3f0nO5zsRy_0JREmDPM0",
+      "location": {
+        "lat": 19.0000531,
+        "lng": 72.85302469999999
+      },
+      "address": "289, Reay Road, Mazagaon, Sewri West, Shivaji Nagar, Sewri, Mumbai",
+      "distanceMeter": 33337.58
+    },
+    {
+      "name": "Coxswain Health Care",
+      "place_id": "ChIJq6pq-Im45zsRC8OvQxe3Brw",
+      "location": {
+        "lat": 19.1480154,
+        "lng": 72.9375098
+      },
+      "address": "305/306, Ground Floor, Bhagtani Enclave, Sonapur Cross Road, Behind Asian, Paints, Bhandup West, Mumbai",
+      "rating": 3,
+      "distanceMeter": 33611.15
+    },
+    {
+      "name": "Noble Chemist",
+      "place_id": "ChIJ3VDZuSfP5zsRDfWXUhqHLG8",
+      "location": {
+        "lat": 19.0236516,
+        "lng": 72.8536349
+      },
+      "address": "Shop No. G-1, 591, Amrut Dhara Building, Jame Jamshed Road, Behind Kapol Niwas, Matunga East, Mumbai",
+      "rating": 3.6,
+      "distanceMeter": 33959.78
+    },
+    {
+      "name": "Roy & Company",
+      "place_id": "ChIJq6qq6hjO5zsR5ZRTDyNRPZc",
+      "location": {
+        "lat": 18.9461332,
+        "lng": 72.8286373
+      },
+      "address": "176, Shamaldas Gandhi Marg, Marine Lines East, Bhangwadi, Kalbadevi, Mumbai",
+      "rating": 4.3,
+      "distanceMeter": 35087.6
+    },
+    {
+      "name": "Orient Homoeopathic Pharmacy",
+      "place_id": "ChIJheaR8efR5zsRGvU9xnINVNI",
+      "location": {
+        "lat": 18.9317869,
+        "lng": 72.8276678
+      },
+      "address": "Eros Cinema Building, Jamshedji Tata Road, Churchgate, Mumbai",
+      "rating": 3.1,
+      "distanceMeter": 35159.44
+    },
+    {
+      "name": "Jay Pharma",
+      "place_id": "ChIJ55A01yHO5zsRJF2Gw7yZDgE",
+      "location": {
+        "lat": 18.9461795,
+        "lng": 72.827871
+      },
+      "address": "WRWH+F4H, Shamaldas Gandhi Marg, Marine Lines East, Bhangwadi, Kalbadevi, Mumbai",
+      "rating": 4.5,
+      "distanceMeter": 35168.33
+    },
+    {
+      "name": "New Empire Chemists",
+      "place_id": "ChIJp9ETiMjJ5zsRuTOQNEELP7g",
+      "location": {
+        "lat": 19.107507,
+        "lng": 72.8404327
+      },
+      "address": "Petrol Pump, Shop No. 3, Empire House, opp. Irla, Swami Vivekananda Road, Irla, Vile Parle West, Mumbai",
+      "rating": 4.2,
+      "distanceMeter": 38989.17
+    },
+    {
+      "name": "Belo Pet Shop",
+      "place_id": "ChIJn-SKZAG35zsRmDI4ZdR-zbI",
+      "location": {
+        "lat": 19.1779376,
+        "lng": 72.87265550000001
+      },
+      "address": "Shop No 3, Velentine Sai Siddhi CHSL, Near Riddhi Tower, Gen. A K Vaidya Marg, Malad East, Mumbai",
+      "rating": 4.5,
+      "distanceMeter": 40841.53
+    }
+  ]

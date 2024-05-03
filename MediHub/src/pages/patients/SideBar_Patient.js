@@ -142,6 +142,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       { name: "Consult", icon: FiStar },
       { name: "Patient's_Profile", icon: FiSettings },
       { name: "Search_Nearby", icon: FiMap },
+      { name: "Search_Pharmacy", icon: FiMap },
     ];
   } else if (userType == "Hospital") {
     LinkItems = [
