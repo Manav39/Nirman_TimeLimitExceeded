@@ -136,10 +136,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
   if (userType === "Doctor") {
     LinkItems = [
-      { name: "Dashboard", icon: FiHome },
+      { name: "Doctor's_Dashboard", icon: FiHome },
       { name: "Diagnose", icon: FiStar },
-      { name: "Patient", icon: FiStar },
-      { name: "Articles", icon: FiStar },
       { name: "Profile", icon: FiSettings },
     ];
   } else if (userType === "Patient") {
