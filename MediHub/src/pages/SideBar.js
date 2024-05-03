@@ -42,7 +42,7 @@ import {
   FiMenu,
   FiBell,
   FiChevronDown,
-  FiMap
+  FiMap,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
 import Cases from "./Diagnose";
@@ -151,12 +151,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       { name: "Patient's_Profile", icon: FiSettings },
       { name: "Search_Nearby", icon: FiMap },
     ];
-  } else if(userType == "Hospital"){
+  } else if (userType == "Hospital") {
     LinkItems = [
       { name: "Dashboard", icon: FiHome },
       { name: "Register_Doctor", icon: FiStar },
       { name: "Add_Patients", icon: FiStar },
       { name: "Beds_Availabilty", icon: FiStar },
+      { name: "Vaccination", icon: FiStar },
     ];
   }
 

@@ -8,8 +8,6 @@ import { ChatIcon } from "@chakra-ui/icons";
 import MeddyJSON from "../constants/Meddy.json";
 import { db, FirebaseAuth } from "../firebase/firebase-config";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import AadharConnect from "../AadharConnect";
-
 const HomePage = () => {
   const navigate = useNavigate();
   const {
@@ -279,7 +277,8 @@ const HomePage = () => {
               <p style={{ fontSize: "150px" }}>MediHub</p>
             </div>
             <div className={styles.subtitle}>
-              One Stop solution which revolutionize HealthCare domain leveraging Technology.
+              One Stop solution which revolutionize HealthCare domain leveraging
+              Technology.
             </div>
             <div className={styles.buttonrow}>
               <button className={styles.button} onClick={requestMetaMaskAccess}>

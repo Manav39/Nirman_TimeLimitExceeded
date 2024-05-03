@@ -31,7 +31,6 @@ const Consult = ({ onSuccess }) => {
 
   const add_client = async () => {
     try {
-
       const addDoc = await contract.grantAccess(address, account, caseNo);
       toast({
         position: "top",
@@ -40,7 +39,6 @@ const Consult = ({ onSuccess }) => {
         duration: 1500,
         isClosable: true,
       });
-
     } catch (err) {
       toast({
         position: "top",
@@ -54,7 +52,6 @@ const Consult = ({ onSuccess }) => {
   };
   const remove_doc = async () => {
     try {
-
       const rmDoc = await contract.removeAccess(account, address, caseNo);
 
       toast({
@@ -64,7 +61,6 @@ const Consult = ({ onSuccess }) => {
         duration: 1500,
         isClosable: true,
       });
-
     } catch (err) {
       toast({
         position: "top",
@@ -98,13 +94,19 @@ const Consult = ({ onSuccess }) => {
             <HStack>
               <FormControl id="title" isRequired>
                 <FormLabel>Case number</FormLabel>
-                <Input type="text" onChange={(e) => setCaseNo(e.target.value)} />
+                <Input
+                  type="text"
+                  onChange={(e) => setCaseNo(e.target.value)}
+                />
               </FormControl>
             </HStack>
             <HStack>
               <FormControl id="title" isRequired>
                 <FormLabel>Doctors Address</FormLabel>
-                <Input type="text" onChange={(e) => setAddress(e.target.value)} />
+                <Input
+                  type="text"
+                  onChange={(e) => setAddress(e.target.value)}
+                />
               </FormControl>
             </HStack>
             {/* <FormControl id="desc" isRequired>
