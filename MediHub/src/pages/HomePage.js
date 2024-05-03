@@ -162,6 +162,10 @@ const HomePage = () => {
     }
   };
 
+  const goToForum = () => {
+    window.open("http://localhost:3001", "_blank");
+  }
+
   const onLogoClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
@@ -236,6 +240,13 @@ const HomePage = () => {
           <div className={styles.menuright}>
             {/* <AadharConnect /> */}
             <div className={styles.menulinks}>
+              <button
+                className={styles.exercises}
+                style={{ fontSize: "180%" }}
+                onClick={goToForum}
+              >
+                FORUM
+              </button>
               <button
                 className={styles.exercises}
                 style={{ fontSize: "180%" }}

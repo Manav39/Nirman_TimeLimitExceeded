@@ -91,6 +91,10 @@ const Assistant = () => {
     // return text;
   }
 
+  const tryAyurveda = () => {
+    window.open("http://localhost:8501", "_blank");
+  }
+
   return (
     <div className={styles.fitnesslandingpage}>
       <div className={styles.navbar}>
@@ -103,6 +107,15 @@ const Assistant = () => {
             />
           </button>
           <div className={styles.menuright}>
+            <div className={styles.menulinks}>
+              <button
+                className={styles.exercises}
+                style={{ fontSize: "180%", marginRight: 50 }}
+                onClick={tryAyurveda}
+              >
+                TRY AYURVEDA
+              </button>
+            </div>
             <div className={styles.menulinks}>
               <button
                 className={styles.exercises}
