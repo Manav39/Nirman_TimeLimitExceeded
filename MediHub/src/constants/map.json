@@ -1,0 +1,221 @@
+[
+  {
+    "name": "Madhavbaug Hospital Khopoli",
+    "place_id": "ChIJGTU-jtX85zsRMYU6sjTQ_SY",
+    "location": {
+      "lat": 18.84737029999999,
+      "lng": 73.27970049999999
+    },
+    "address": "Plot Nos. 89/6 Near Mack Petrol Pump, Kalote Rayate, Khalapur",
+    "rating": 4.7,
+    "distanceMeter": 15708.6
+  },
+  {
+    "name": "D Y Patil Hospital",
+    "place_id": "ChIJVVVVpRjG5zsRyCXmkVG4RqQ",
+    "location": {
+      "lat": 19.0411561,
+      "lng": 73.0246854
+    },
+    "address": "Ayyappa Temple Road, Sector 5, Nerul, Navi Mumbai",
+    "rating": 4.3,
+    "distanceMeter": 18699.16
+  },
+  {
+    "name": "Harish Hospital",
+    "place_id": "ChIJRRQ_-9zD5zsR-cwIdnfOWk0",
+    "location": {
+      "lat": 19.0433775,
+      "lng": 73.02050419999999
+    },
+    "address": "Plot No. 22, Sector No 3 C, Shivaji Chowk, Near, Rajiv Gandhi Bridge, Nerul, Navi Mumbai",
+    "rating": 4.4,
+    "distanceMeter": 19195.62
+  },
+  {
+    "name": "Apollo Spectra Hospital",
+    "place_id": "ChIJEXUgmgjG5zsR_REXt_mFdvI",
+    "location": {
+      "lat": 19.047139,
+      "lng": 72.9110992
+    },
+    "address": "2WW6+VCW, apollo spectra hospital, Ujagar Compund Opp. Deonar Bus Depot Main GAte, MBPT Colony, Best Colony, Chembur, Mumbai",
+    "rating": 4.6,
+    "distanceMeter": 29208.44
+  },
+  {
+    "name": "Life Line Hospital",
+    "place_id": "ChIJvyrsOky_5zsRTVJqxIP0wGE",
+    "location": {
+      "lat": 19.1577449,
+      "lng": 72.99833989999999
+    },
+    "address": "3, Bharatratna Ambedkar Road, Sector 3, Airoli, Navi Mumbai",
+    "rating": 2.8,
+    "distanceMeter": 30225.45
+  },
+  {
+    "name": "SRV Hospitals - Dombivali (Formerly Mamata Hospital)",
+    "place_id": "ChIJlenKNJqV5zsRd_36Ux0GzBM",
+    "location": {
+      "lat": 19.2073689,
+      "lng": 73.1042058
+    },
+    "address": "next to ICICI Bank, P-43, next to ICICI Bank, Phase II, MIDC, Dombivli (E, Dombivli",
+    "rating": 3.9,
+    "distanceMeter": 30977.75
+  },
+  {
+    "name": "Noble Plus Hospital",
+    "place_id": "ChIJwQVPI9PH5zsRUGvWbktj05g",
+    "location": {
+      "lat": 19.0878806,
+      "lng": 72.9066933
+    },
+    "address": "opp. ZYNOVA SHALBY HOSPITAL, 501 Swastik Esplanade Behind Alpana Apartment, opp. ZYNOVA SHALBY HOSPITAL, Lal Bahadur Shastri Marg, Ghatkopar West, Mumbai",
+    "rating": 4.6,
+    "distanceMeter": 31811.06
+  },
+  {
+    "name": "Healthizen",
+    "place_id": "ChIJBauEPiO25zsRqz11R4V-YR4",
+    "location": {
+      "lat": 19.109846,
+      "lng": 72.89721449999999
+    },
+    "address": "CTS No.73, Saki Estate, Near Kamani Oil Mill, Off Chandivali Road, Chandivali, Andheri (E), Navi Mumbai",
+    "distanceMeter": 33996.52
+  },
+  {
+    "name": "Holy Trinity Hospital-Advanced Cardio Diabetic Care",
+    "place_id": "ChIJnbHYyva45zsR23RVwWJyffA",
+    "location": {
+      "lat": 19.1674623,
+      "lng": 72.9512488
+    },
+    "address": "1st Floor, Heritage Holy Apartment, Pandit Jawaharlal Nehru Road, Mulund West, Mumbai",
+    "rating": 4.6,
+    "distanceMeter": 34104.49
+  },
+  {
+    "name": "K B Haji Bachooali Charitable Ophthalmic & ENT Hospital",
+    "place_id": "ChIJC4DhY-XO5zsRb-vlJPvS5KQ",
+    "location": {
+      "lat": 19.0029179,
+      "lng": 72.8403634
+    },
+    "address": "58/60, J Merwanji Street, Parel, Mumbai",
+    "rating": 3.6,
+    "distanceMeter": 34664.44
+  },
+  {
+    "name": "Seven Hills Hospital",
+    "place_id": "ChIJ690opxfI5zsR05T02iSmmZU",
+    "location": {
+      "lat": 19.1179997,
+      "lng": 72.8780374
+    },
+    "address": "Marol Maroshi Road, Mahavir Nagar, Pandit Dindayala Upadhaya Nagar, Andheri East, Mumbai",
+    "rating": 3.7,
+    "distanceMeter": 36169.2
+  },
+  {
+    "name": "Drushti Eye & Retina Centre",
+    "place_id": "ChIJ3bFhFQ7O5zsRjo0Z1JZChPw",
+    "location": {
+      "lat": 18.9569873,
+      "lng": 72.8151566
+    },
+    "address": "210/211, 2nd Floor, Radhe Vallabh Cooperative Housing Society, next to Bank of Baroda, corner, Haldankar Bridge, Opera House, Girgaon, Mumbai",
+    "rating": 4.4,
+    "distanceMeter": 36554.81
+  },
+  {
+    "name": "Bhatia Hospital",
+    "place_id": "ChIJ8TXS4HLO5zsRi9vVEbPHj2k",
+    "location": {
+      "lat": 18.9657188,
+      "lng": 72.8132737
+    },
+    "address": "Tardeo Road, Tardeo, Mumbai",
+    "rating": 4.1,
+    "distanceMeter": 36831.18
+  },
+  {
+    "name": "Jaslok Hospital & Research Centre",
+    "place_id": "ChIJk3X00XbO5zsRx2UpTspHr3M",
+    "location": {
+      "lat": 18.9715715,
+      "lng": 72.80995709999999
+    },
+    "address": "15, Pedder Road, Tardeo, Mumbai",
+    "rating": 4.8,
+    "distanceMeter": 37244.82
+  },
+  {
+    "name": "Ramakrishna Mission Hospital",
+    "place_id": "ChIJaRBjyQ7J5zsRYpZcCwp298c",
+    "location": {
+      "lat": 19.0746686,
+      "lng": 72.8359557
+    },
+    "address": "Central Avenue Marg, 12th Road, Khar West, Mumbai",
+    "rating": 4,
+    "distanceMeter": 37660.5
+  },
+  {
+    "name": "Breach Candy Hospital Trust",
+    "place_id": "ChIJTZphhnnO5zsRzn8BB0ICCWA",
+    "location": {
+      "lat": 18.9725348,
+      "lng": 72.8045668
+    },
+    "address": "60 A, Bhulabhai Desai Marg, Breach Candy, Cumballa Hill, Mumbai",
+    "rating": 4.1,
+    "distanceMeter": 37820.03
+  },
+  {
+    "name": "P.H.Medical-Centre",
+    "place_id": "ChIJz-oD_qbJ5zsR0B9uDVSanG4",
+    "location": {
+      "lat": 19.083949,
+      "lng": 72.836469
+    },
+    "address": "Medical Centre, Sai Rachana Soc, next to SBI Bank, P.H, Juhu Tara Road, Santacruz West, Mumbai",
+    "rating": 4.4,
+    "distanceMeter": 38050.77
+  },
+  {
+    "name": "Madhavbaug Multidisciplinary Cardiac Care Clinic | Heart Blockages I Diabetes Reversal",
+    "place_id": "ChIJjaOgSKa35zsRzATI9zfCMIE",
+    "location": {
+      "lat": 19.172268,
+      "lng": 72.865136
+    },
+    "address": "High School, Gayatri Nursing Home, Florencia Society Amritvan Complex, Ciba Geigy Rd, Nr Yashodham, Dindoshi, Goregaon, Mumbai",
+    "rating": 4.8,
+    "distanceMeter": 40911.86
+  },
+  {
+    "name": "Kokilaben Dhirubhai Ambani Hospital and Medical Research Institute",
+    "place_id": "ChIJaUzg1x625zsRJCynVxLFYDg",
+    "location": {
+      "lat": 19.1313448,
+      "lng": 72.825063
+    },
+    "address": "Rao Saheb, Rao Saheb Achutrao Patwardhan Marg, Four Bungalows, Andheri West, Mumbai",
+    "rating": 3.3,
+    "distanceMeter": 41645.11
+  },
+  {
+    "name": "Hamzah nursing home",
+    "place_id": "ChIJZ5BVNrqx5zsRVYb5cOJvkiM",
+    "location": {
+      "lat": 19.2761471,
+      "lng": 72.89140309999999
+    },
+    "address": "Nilkanth apartment, near Western Park Road, Dachkul Pada Road, Kashimira, Mira Road East, Mira Bhayandar",
+    "rating": 4.4,
+    "distanceMeter": 47473.49
+  }
+]
