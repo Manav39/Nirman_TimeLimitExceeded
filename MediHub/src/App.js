@@ -8,16 +8,6 @@ import HomePage from "./pages/HomePage";
 import SideBar from "./pages/SideBar";
 import Diagnose from "./pages/Diagnose";
 import { useEffect } from "react";
-import {
-  Routes,
-  Route,
-  useNavigationType,
-  useLocation,
-} from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import SideBar from "./pages/SideBar";
-import Diagnose from "./pages/Diagnose";
-import { useEffect } from "react";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import Dashboard from "./pages/Dashboard";
@@ -27,6 +17,7 @@ import Medical_History from "./pages/patients/Medical_History";
 import Profile from "./pages/Profile";
 import Dashboard_patient from "./pages/patients/Dasboard_patient";
 import Search_Nearby from "./pages/patients/Search_Nearby";
+import Vaccine from './pages/Vaccine';
 
 import News from "./pages/News";
 import Assistant from "./pages/Assistant";
@@ -240,7 +231,5 @@ function App() {
       </Routes>
     </ChakraProvider>
   );
-  );
 }
-export default App;
 export default App;
