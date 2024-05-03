@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useContract } from "../context/context";
+import { ethers } from "ethers";
 
 const Consult = ({ onSuccess }) => {
   const toast = useToast();
@@ -28,11 +29,21 @@ const Consult = ({ onSuccess }) => {
   const { account, contract } = useContract();
   const [address, setAddress] = useState("");
   const [caseNo, setCaseNo] = useState("");
+  const [charges, setCharges] = useState("");
+  const [Cause, setCause] = useState("");
+  const [pre, setPre] = useState("");
 
   const add_client = async () => {
     try {
-
-      const addDoc = await contract.grantAccess(address, account, caseNo);
+      const addDoc = await contract.diagnosePatient(
+        address,
+        parseInt(caseNo),
+        ethers.utils.parseEther("0.01"),
+        Cause,
+        pre,
+        { value: ethers.utils.parseEther("0.0001"), gasLimit: 1000000 }
+      );
+      console.log(addDoc);
       toast({
         position: "top",
         title: "New Client Added Successfully",
@@ -40,7 +51,6 @@ const Consult = ({ onSuccess }) => {
         duration: 1500,
         isClosable: true,
       });
-
     } catch (err) {
       toast({
         position: "top",
@@ -54,7 +64,6 @@ const Consult = ({ onSuccess }) => {
   };
   const remove_doc = async () => {
     try {
-
       const rmDoc = await contract.removeAccess(account, address, caseNo);
 
       toast({
@@ -64,7 +73,6 @@ const Consult = ({ onSuccess }) => {
         duration: 1500,
         isClosable: true,
       });
-
     } catch (err) {
       toast({
         position: "top",
@@ -86,7 +94,10 @@ const Consult = ({ onSuccess }) => {
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"} textAlign={"center"}></Heading>
+          <Heading fontSize={"4xl"} textAlign={"center"}>
+            {" "}
+            PATIENT REPORT
+          </Heading>
         </Stack>
         <Box
           rounded={"lg"}
@@ -97,20 +108,44 @@ const Consult = ({ onSuccess }) => {
           <Stack spacing={4}>
             <HStack>
               <FormControl id="title" isRequired>
-                <FormLabel>Case number</FormLabel>
-                <Input type="text" onChange={(e) => setCaseNo(e.target.value)} />
+                <FormLabel>Case Number</FormLabel>
+                <Input
+                  type="text"
+                  onChange={(e) => setCaseNo(e.target.value)}
+                />
               </FormControl>
             </HStack>
             <HStack>
               <FormControl id="title" isRequired>
-                <FormLabel>Doctors Address</FormLabel>
-                <Input type="text" onChange={(e) => setAddress(e.target.value)} />
+                <FormLabel>Doctor Address</FormLabel>
+                <Input
+                  type="text"
+                  onChange={(e) => setAddress(e.target.value)}
+                />
               </FormControl>
             </HStack>
-            {/* <FormControl id="desc" isRequired>
-              <FormLabel>Client Address</FormLabel>
-              <Input type="text" onChange={(e) => setAddress(e.target.value)} />
-            </FormControl> */}
+
+            <HStack>
+              <FormControl id="title" isRequired>
+                <FormLabel>Consultancy Fees</FormLabel>
+                <Input
+                  type="text"
+                  onChange={(e) => setCharges(e.target.value)}
+                />
+              </FormControl>
+            </HStack>
+            <HStack>
+              <FormControl id="desc" isRequired>
+                <FormLabel>Disease</FormLabel>
+                <Input type="text" onChange={(e) => setCause(e.target.value)} />
+              </FormControl>
+            </HStack>
+            <HStack>
+              <FormControl id="desc" isRequired>
+                <FormLabel>Drugs</FormLabel>
+                <Input type="text" onChange={(e) => setPre(e.target.value)} />
+              </FormControl>
+            </HStack>
 
             <Stack spacing={10} pt={2}>
               <Button
@@ -124,18 +159,6 @@ const Consult = ({ onSuccess }) => {
                 }}
               >
                 Add
-              </Button>
-              <Button
-                onClick={remove_doc}
-                loadingText="Submitting"
-                size="lg"
-                bg={"red.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-              >
-                Remove
               </Button>
             </Stack>
             <Stack pt={6}></Stack>
