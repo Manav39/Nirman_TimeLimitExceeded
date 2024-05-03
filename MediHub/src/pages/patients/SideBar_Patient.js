@@ -42,6 +42,7 @@ import {
   FiMenu,
   FiBell,
   FiChevronDown,
+  FiMap,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
 import Cases from "../Diagnose";
@@ -113,7 +114,7 @@ const SidebarProps = {
 //   { name: 'Profile', icon: FiSettings },
 // ]
 
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ onClose, ...rest }) => {
   // const { userType } = useContract();
   const [usertype, setUsertype] = useState("");
   const { account, userType } = useContract();
@@ -132,17 +133,17 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     icon: "IconType",
   };
 
-  let LinkItems: Array<LinkItemProps> = [];
+  let LinkItems = [];
 
-  
-   if (userType === "Patient") {
+  if (userType === "Patient") {
     LinkItems = [
       { name: "patient_Dashboard", icon: FiHome },
       { name: "Medical_History", icon: FiStar },
       { name: "Consult", icon: FiStar },
       { name: "Patient's_Profile", icon: FiSettings },
+      { name: "Search_Nearby", icon: FiMap },
     ];
-  } else if(userType == "Hospital"){
+  } else if (userType == "Hospital") {
     LinkItems = [
       { name: "Dashboard", icon: FiHome },
       { name: "Register_Doctor", icon: FiStar },
@@ -178,7 +179,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   );
 };
 
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children, ...rest }) => {
   return (
     <Link to={`/${children}`}>
       <Box
@@ -216,7 +217,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   );
 };
 
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+const MobileNav = ({ onOpen, ...rest }) => {
   const [usertype, setUsertype] = useState("");
   const { account, userType } = useContract();
   useEffect(() => {

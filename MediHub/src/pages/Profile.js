@@ -1,136 +1,148 @@
 import React, { useEffect, useState } from "react";
-import { useContract } from "../context/context";
 import {
-  Card,
-  CardBody,
-  Image,
-  Stack,
   Heading,
   Text,
-  Divider,
-  CardFooter,
-  ButtonGroup,
   Button,
-  HStack,
+  Box,
+  Flex,
+  Spacer,
+  Input,
+  FormControl,
+  FormLabel,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
-import { collection, addDoc } from "firebase/firestore";
-import { getDocs, query, where } from "firebase/firestore";
-import { db, FirebaseAuth } from "../firebase/firebase-config";
+import { Link } from "react-router-dom";
+import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
+import { db } from "../firebase/firebase-config";
 
-const Profile = () => {
-  const { account, contract } = useContract();
-  const [usertype, setUsertype] = useState("");
-  const [patientDetails, setPatientDetails] = useState([]);
-  const [data, setData] = useState([]);
-  const [doc, setDoc] = useState([]);
+const Profile = ({ userType }) => {
+  const [profileData, setProfileData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    height: "",
+    specialisedIn: "",
+    // Add more fields as needed
+  });
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
   useEffect(() => {
-    // if (account === "0x46A2A666fc06681e2cB49440a0776a6C4Cc21906" || account === "0x597875bcA8d92C79Cbbc735A90aD25b8CaB9D608" ||account === "0xf40b291189aE7F917c39D0B7e327E0A929c9952c" || account === "0xdaDD30aAEe8E15F925b3b0F0e18f84E6FE62C6f9") {
-    //   setUsertype("doctor");
-    // } else {
-    //   setUsertype("patient");
-    // }
-    // const fetchData = async () => {
-    //   try {
-    //     const pDetails = await contract.getPatientDetails(account);
-    //     setPatientDetails(pDetails.slice(1, 5));
-    //   } catch (e) {
-    //     console.log(e);
-    //   }
-    // };
-    // const getData = async () => {
-    //   const data = await contract.getDoctorDetails(account);
-    //   console.log(data);
-    //   setData(data);
-    // };
-    // if (account === "0x46A2A666fc06681e2cB49440a0776a6C4Cc21906" || account === "0x597875bcA8d92C79Cbbc735A90aD25b8CaB9D608" || account === "0xf40b291189aE7F917c39D0B7e327E0A929c9952c" || account === "0xdaDD30aAEe8E15F925b3b0F0e18f84E6FE62C6f9") {
-    //   getData();
-    // } else {
-    //   fetchData();
-    // }
-    const getData = async () => {
-      const res = await getDocs(collection(db, "profiles"));
-      for (let i = 0; i < res.docs.length; i++) {
-        if (res?.docs[i]?.data()?.email == "manavshah1104@gmail.com") {
-          setDoc(res?.docs[i]?.data());
+    const fetchData = async () => {
+      const profilesRef = collection(db, "Doctor");
+      const profilesSnapshot = await getDocs(profilesRef);
+      profilesSnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.email === "manavshah1104@gmail.com") {
+          setProfileData(data);
         }
-      }
+      });
     };
-    getData();
-    console.log(doc);
-  }, [account, contract]);
+
+    fetchData();
+  }, []);
+
+  const handleEditProfile = async () => {
+    // Implement edit profile functionality
+    // For example, update the profile data in the database
+    const profileRef = doc(db, "profiles", "profileId"); // Replace "profileId" with the actual document ID
+    await updateDoc(profileRef, profileData);
+    setIsEditModalOpen(false); // Close the modal after editing
+  };
 
   return (
-    <>
-      {usertype === "Patient" ? (
-        <HStack align={"center"} justify={"center"}>
-          <Card maxW="lg" align="center">
-            <CardBody>
-              <Image
-                src="https://thumbs.dreamstime.com/b/judge-simple-flat-vector-personal-profile-icon-symbol-people-concept-illustration-246675256.jpg"
-                alt="Green double couch with wooden legs"
-                borderRadius="md"
-                width={400}
-                height={300}
-                style={{ alignItems: "center", marginLeft: "30px" }}
+    <Flex direction="column" align="center" justify="center">
+      <Heading size="lg" mb={4}>User Profile</Heading>
+      <Box borderWidth="1px" borderRadius="lg" p={6} width="80%">
+        <FormControl id="name" mb={4}>
+          <FormLabel fontWeight="bold">Name</FormLabel>
+          <Input type="text" value={profileData.name} readOnly />
+        </FormControl>
+        <FormControl id="email" mb={4}>
+          <FormLabel fontWeight="bold">Email</FormLabel>
+          <Input type="email" value={profileData.email} readOnly />
+        </FormControl>
+        <FormControl id="phone" mb={4}>
+          <FormLabel fontWeight="bold">Phone</FormLabel>
+          <Input type="tel" value={profileData.phone} readOnly />
+        </FormControl>
+      
+        <FormControl id="specialised" mb={4}>
+          <FormLabel fontWeight="bold">Specialised In</FormLabel>
+          <Input type="text" value={profileData.specialised} readOnly />
+        </FormControl>
+        {/* Add more fields here */}
+        <Link to="">
+          <Button
+            colorScheme="blue"
+            variant="solid"
+            mt={4}
+            onClick={() => setIsEditModalOpen(true)}
+          >
+            Edit Profile
+          </Button>
+        </Link>
+      </Box>
+
+      {/* Edit Profile Modal */}
+      <Modal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Edit Profile</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {/* Form for editing profile */}
+            <FormControl id="name" mb={4}>
+              <FormLabel fontWeight="bold">Name</FormLabel>
+              <Input
+                type="text"
+                value={profileData.name}
+                onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
               />
-              <Stack mt="6" spacing="3" align="center">
-                <Heading size="md">User Type : {doc?.userType} </Heading>
-                <Heading size="md">Name : {doc?.name}</Heading>
-                <Heading size="md"> age : {doc?.age}</Heading>
-                <Heading size="md"> weight : {doc?.weight}</Heading>
-                <Heading size="md"> height : {doc?.height}</Heading>
-              </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter>
-              <ButtonGroup spacing="2">
-                <Link to="">
-                  {" "}
-                  <Button variant="solid" colorScheme="blue">
-                    View Cases
-                  </Button>
-                </Link>
-              </ButtonGroup>
-            </CardFooter>
-          </Card>
-        </HStack>
-      ) : (
-        <HStack align={"center"} justify={"center"}>
-          <Card maxW="lg" align="center">
-            <CardBody>
-              <Image
-                src="/doco.jpg"
-                alt="Green double couch with wooden legs"
-                borderRadius="md"
-                width={400}
-                height={300}
-                style={{ alignItems: "center", marginLeft: "30px" }}
+            </FormControl>
+            <FormControl id="email" mb={4}>
+              <FormLabel fontWeight="bold">Email</FormLabel>
+              <Input
+                type="email"
+                value={profileData.email}
+                onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
               />
-              <Stack mt="6" spacing="3" align="center">
-                <Heading size="md">Name : {doc?.name} </Heading>
-                <Heading size="md">Doctor Id : 12</Heading>
-                <Heading size="md">Specialism : Skin Disease</Heading>
-                <Heading size="md">
-                  Total Number of Patients : {doc?.length}
-                </Heading>
-              </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter>
-              <ButtonGroup spacing="2">
-                <Link to="">
-                  {" "}
-                  <Button variant="solid" colorScheme="blue">
-                    View Cases
-                  </Button>
-                </Link>
-              </ButtonGroup>
-            </CardFooter>
-          </Card>
-        </HStack>
-      )}
-    </>
+            </FormControl>
+            <FormControl id="phone" mb={4}>
+              <FormLabel fontWeight="bold">Phone</FormLabel>
+              <Input
+                type="tel"
+                value={profileData.phone}
+                onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
+              />
+            </FormControl>
+       
+            
+            <FormControl id="specilised" mb={4}>
+              <FormLabel fontWeight="bold">Specialised In</FormLabel>
+              <Input
+                type="text"
+                value={profileData.weight}
+                onChange={(e) => setProfileData({ ...profileData, specialised: e.target.value })}
+              />
+            </FormControl>
+            {/* Add more fields here */}
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={handleEditProfile}>
+              Save Changes
+            </Button>
+            <Button variant="outline" onClick={() => setIsEditModalOpen(false)}>Cancel</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </Flex>
   );
 };
 
