@@ -16,6 +16,7 @@ import Articles from "./pages/Articles";
 import Medical_History from "./pages/patients/Medical_History";
 import Profile from "./pages/Profile";
 import Dashboard_patient from "./pages/patients/Dasboard_patient";
+import Search_Nearby from "./pages/patients/Search_Nearby";
 
 import News from "./pages/News";
 import Assistant from "./pages/Assistant";
@@ -25,7 +26,7 @@ import Login from "./pages/Login";
 import AddDoctors from "./pages/AddDoctors";
 import Beds from "./pages/Beds";
 import SideBar_Patient from "./pages/patients/SideBar_Patient";
-import Profile_Patient from "./pages/patients/Profile_Patient"
+import Profile_Patient from "./pages/patients/Profile_Patient";
 import HospitalSignUp from "./pages/HospitalSignUp";
 import HospitalDesc from "./pages/HospitalDesc";
 import HospitalLogin from "./pages/HospitalLogin";
@@ -52,28 +53,38 @@ function App() {
           }
         />
 
-         <Route
+        <Route
           path="/patient_Dashboard"
           element={
             <>
               <SideBar_Patient>
-                <Dashboard_patient/>
+                <Dashboard_patient />
               </SideBar_Patient>
             </>
           }
         />
 
-          <Route
+        <Route
           path="/Medical_History"
           element={
             <>
               <SideBar_Patient>
-                <Medical_History/>
+                <Medical_History />
               </SideBar_Patient>
             </>
           }
         />
 
+        <Route
+          path="/Search_Nearby"
+          element={
+            <>
+              <SideBar_Patient>
+                <Search_Nearby />
+              </SideBar_Patient>
+            </>
+          }
+        />
 
         <Route
           path="/Diagnose"
@@ -129,11 +140,11 @@ function App() {
           }
         />
 
-          <Route
+        <Route
           path="/Patient's_Profile"
           element={
             <SideBar_Patient>
-              <Profile_Patient/>
+              <Profile_Patient />
             </SideBar_Patient>
           }
         />
