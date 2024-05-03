@@ -8,6 +8,16 @@ import HomePage from "./pages/HomePage";
 import SideBar from "./pages/SideBar";
 import Diagnose from "./pages/Diagnose";
 import { useEffect } from "react";
+import {
+  Routes,
+  Route,
+  useNavigationType,
+  useLocation,
+} from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import SideBar from "./pages/SideBar";
+import Diagnose from "./pages/Diagnose";
+import { useEffect } from "react";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import Dashboard from "./pages/Dashboard";
@@ -93,6 +103,17 @@ function App() {
             <>
               <SideBar>
                 <Diagnose />
+              </SideBar>
+            </>
+          }
+        />
+
+        <Route
+          path="/Vaccination"
+          element={
+            <>
+              <SideBar>
+                <Vaccine />
               </SideBar>
             </>
           }
@@ -208,5 +229,7 @@ function App() {
       </Routes>
     </ChakraProvider>
   );
+  );
 }
+export default App;
 export default App;
