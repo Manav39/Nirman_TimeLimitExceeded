@@ -98,9 +98,6 @@ const Login = () => {
         <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
           <Stack align={"center"}>
             <Heading fontSize={"4xl"}>Sign Up</Heading>
-            <Text fontSize={"lg"} color={"gray.600"}>
-              <Text color={"blue.400"}>Only for the 1st time</Text>
-            </Text>
           </Stack>
           <Box
             rounded={"lg"}
