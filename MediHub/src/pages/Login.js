@@ -32,7 +32,6 @@ const Login = () => {
   const toast = useToast();
   const { authData } = useContract();
 
-  const { account, setUserType } = useContract();
   const { setAccount, setUserType, account } = useContract();
 
   const [name, setName] = useState("");
