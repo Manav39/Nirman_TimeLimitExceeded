@@ -32,7 +32,7 @@ const Login = () => {
   const toast = useToast();
   const { authData } = useContract();
 
-  const { setAccount, setUserType } = useContract();
+  const { setAccount, setUserType, account } = useContract();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -42,17 +42,6 @@ const Login = () => {
   const [metamaskAddress, setMetamaskAddress] = useState("");
   const [usertype, setUsertype] = useState("");
   const [Id, setID] = useState("");
-
-  const emailExists = async (email) => {
-    const res = await getDocs(collection(db, "doctors"));
-    for (let i = 0; i < res.docs.length; i++) {
-      if (res?.docs[i]?.data()?.email == email) {
-        setUserType(res?.docs[i]?.data()?.userType);
-        return true;
-      }
-    }
-    return false;
-  };
 
   const signIn = async (e) => {
     e.preventDefault();
@@ -161,12 +150,14 @@ const Login = () => {
                 <FormLabel>Metamask Address</FormLabel>
                 <Input
                   type="text"
+                  value={account}
+                  isDisabled
                   onChange={(e) => setMetamaskAddress(e.target.value)}
                 />
               </FormControl>
 
               <FormControl id="text" isRequired>
-                <FormLabel>ID</FormLabel>
+                <FormLabel>Hospital ID</FormLabel>
                 <Input type="text" onChange={(e) => setID(e.target.value)} />
               </FormControl>
 
@@ -174,7 +165,6 @@ const Login = () => {
                 <FormLabel>User Type</FormLabel>
                 <Select onChange={(e) => setUsertype(e.target.value)}>
                   <option value="">Select User Type</option>
-                  <option value="Hospital">Hospital</option>
                   <option value="Patient">Patient</option>
                   <option value="Doctor">Doctor</option>
                 </Select>

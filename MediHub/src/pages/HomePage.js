@@ -251,6 +251,13 @@ const HomePage = () => {
                 NEWS
               </button>
               <button
+                className={styles.exercises}
+                style={{ fontSize: "180%" }}
+                onClick={onAssistantClick}
+              >
+                <ChatIcon /> FORUM
+              </button>
+              <button
                 className={styles.login}
                 style={{ fontSize: "180%" }}
                 onClick={requestMetaMaskAccess}
