@@ -31,6 +31,6 @@
 ## Bed Availability in a hospital
 ![1dff2423-30d1-46a0-9c29-3360b7b2da20](https://github.com/Manav39/Nirman_TimeLimitExceeded/assets/95200741/3feb7cda-5fcf-413c-9b7f-eafb3b01737e)
 
-## Hospital Dashboard
+## Hospital Dashboard with real time data
 ![d685a225-1f24-400d-9aba-4f6a3ff037a8](https://github.com/Manav39/Nirman_TimeLimitExceeded/assets/95200741/38cad01c-a59a-4595-a8e4-46ec3cf6aa8a)
 
